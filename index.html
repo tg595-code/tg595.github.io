@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyesha Ganesh | Professional Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette */
+            --yellow: #FFF9C4;
+            --pink: #FCE4EC;
+            --purple: #F3E5F5;
+            --blue: #E3F2FD;
+            --orange: #FFE0B2;
+            --green: #E8F5E9;
+            
+            /* Text & Accents */
+            --text-dark: #2D3436;
+            --text-light: #636E72;
+            --accent-blue: #0984e3;
+            --accent-pink: #f06292;
+            --accent-orange: #E67E22;
+            --accent-green: #2E7D32;
+            --accent-purple: #6c5ce7;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc;
+            color: var(--text-dark);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .portfolio-card {
+            width: 100%;
+            max-width: 950px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--blue), var(--pink));
+            padding: 80px 40px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-halo {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--yellow), var(--pink), var(--purple), var(--blue));
+            animation: rotateHalo 6s linear infinite;
+            padding: 5px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes rotateHalo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 { font-family: 'Poppins', sans-serif; margin: 10px 0 5px; font-size: 2.4rem; letter-spacing: -1px; }
+        .contact-info { color: var(--text-light); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; }
+
+        .btn-resume {
+            background-color: var(--yellow);
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+
+        .btn-resume:hover { transform: scale(1.05); background-color: white; border-color: var(--yellow); }
+
+        /* --- Tab System --- */
+        .tabs {
+            display: flex;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 20px 5px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-light);
+            transition: 0.3s;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-btn.active {
+            color: var(--text-dark);
+            border-bottom: 5px solid var(--yellow);
+            background-color: #fafafa;
+        }
+
+        /* --- Content Sections --- */
+        .content-section {
+            display: none;
+            padding: 50px 40px;
+            animation: slideUpFade 0.6s ease forwards;
+        }
+
+        .content-section.active { display: block; }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-item {
+            margin-bottom: 35px;
+            padding-left: 25px;
+            border-left: 4px solid var(--blue);
+        }
+
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 5px; }
+        .company { font-weight: 600; color: var(--accent-blue); font-size: 1.15rem; }
+        .date { font-size: 0.85rem; color: var(--text-light); font-weight: 600; }
+        .job-title { display: block; font-weight: 600; margin-bottom: 10px; font-style: italic; }
+
+        ul { padding-left: 20px; margin: 0; }
+        li { margin-bottom: 8px; font-size: 1rem; line-height: 1.6; }
+
+        .pill-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
+        .pill {
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Pill Color variants */
+        .pill.blue { background: var(--blue); color: var(--accent-blue); }
+        .pill.pink { background: var(--pink); color: var(--accent-pink); }
+        .pill.purple { background: var(--purple); color: var(--accent-purple); }
+        .pill.orange { background: var(--orange); color: var(--accent-orange); }
+        .pill.green { background: var(--green); color: var(--accent-green); }
+
+        h2 { font-family: 'Poppins', sans-serif; border-bottom: 3px solid var(--purple); display: inline-block; padding-bottom: 8px; margin-bottom: 30px; font-size: 1.6rem; }
+    </style>
+</head>
+<body>
+
+<div class="portfolio-card">
+    <div class="hero">
+        <div class="profile-container">
+            <div class="profile-halo"></div>
+            <img src="Assets/ProfilePic.jpeg" alt="Toyesha Ganesh" class="profile-img">
+        </div>
+        <h1>Toyesha Ganesh</h1>
+        <p class="contact-info">
+            East Brunswick, NJ | (732) 351 5910<br>
+            toyeshaganesh@gmail.com
+        </p>
+        <a href="Resume.pdf" class="btn-resume">Download Full Resume</a>
+    </div>
+
+    <nav class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'work')">Experience</button>
+        <button class="tab-btn" onclick="openTab(event, 'edu')">Education</button>
+        <button class="tab-btn" onclick="openTab(event, 'skills')">Technical Skills</button>
+        <button class="tab-btn" onclick="openTab(event, 'langs')">Languages</button>
+        <button class="tab-btn" onclick="openTab(event, 'clubs')">Clubs</button>
+        <button class="tab-btn" onclick="openTab(event, 'interests')">Interests</button>
+    </nav>
+
+    <div id="work" class="content-section active">
+        <h2>Experience</h2>
+        <div class="exp-item">
+            <div class="exp-header"><span class="company">Knack Tutor</span><span class="date">Sept 2025 – Present</span></div>
+            <span class="job-title">Rutgers Business School</span>
+            <ul>
+                <li>Delivers one-on-one and group tutoring sessions in Financial and Managerial Accounting.</li>
+                <li>Simplifies complex concepts such as financial statements and cost analysis.</li>
+            </ul>
+        </div>
+        <div class="exp-item" style="border-color: var(--purple);">
+            <div class="exp-header"><span class="company">Munich Re Insurance</span><span class="date">May 2025 – Aug 2025</span></div>
+            <span class="job-title">Technical Accounting & Treasury Intern</span>
+            <ul>
+                <li>Implemented RPA to automate routine tasks, increasing operational efficiency.</li>
+                <li>Journaled entries in SAP/FSRI and validated large financial datasets in Excel.</li>
+            </ul>
+        </div>
+        <div class="exp-item" style="border-color: var(--pink);">
+            <div class="exp-header"><span class="company">Munich Re Insurance</span><span class="date">May 2024 – Aug 2024</span></div>
+            <span class="job-title">Accounts Payable & Treasury Intern</span>
+            <ul>
+                <li>Processed vendor receipts using Smart Fix Verifier AI tool and Coupa software.</li>
+                <li>Set up and validated vendor records within SAP.</li>
+            </ul>
+        </div>
+        <div class="exp-item" style="border-color: var(--yellow);">
+            <div class="exp-header"><span class="company">TJ MAXX</span><span class="date">Sept 2023 – April 2024</span></div>
+            <span class="job-title">Associate</span>
+            <ul>
+                <li>Managed cashier processing and inventory coding per company guidelines.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="edu" class="content-section">
+        <h2>Education</h2>
+        <div class="exp-item" style="border-color: var(--pink);">
+            <div class="exp-header"><span class="company">Rutgers Business School</span><span class="date">Jan 2027</span></div>
+            <span class="job-title">B.S. in Accounting and Finance</span>
+            <p><strong>GPA: 3.7 / 4.0</strong></p>
+            <div class="pill-group">
+                <span class="pill pink">Financial Accounting</span>
+                <span class="pill pink">Intermediate Accounting</span>
+                <span class="pill pink">Managerial Accounting</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="skills" class="content-section">
+        <h2>Technical Proficiencies</h2>
+        <div class="pill-group">
+            <span class="pill purple">SAP / FSRI</span>
+            <span class="pill purple">Coupa</span>
+            <span class="pill purple">Smart Fix Verifier</span>
+            <span class="pill purple">Excel (Advanced)</span>
+            <span class="pill purple">RPA Workflow</span>
+        </div>
+    </div>
+
+    <div id="langs" class="content-section">
+        <h2>Languages</h2>
+        <div class="pill-group">
+            <span class="pill blue">Hindi (Native)</span>
+            <span class="pill blue">Gujarati (Native)</span>
+            <span class="pill blue">Spanish (Conversational)</span>
+        </div>
+    </div>
+
+    <div id="clubs" class="content-section">
+        <h2>Leadership & Clubs</h2>
+        <div class="pill-group">
+            <span class="pill orange">Road to CPA</span>
+            <span class="pill orange">Beta Alpha Psi</span>
+            <span class="pill orange">Rutgers Accounting Association</span>
+        </div>
+    </div>
+
+    <div id="interests" class="content-section">
+        <h2>Personal Interests</h2>
+        <div class="pill-group">
+            <span class="pill green">Singing</span>
+            <span class="pill green">Piano</span>
+            <span class="pill green">Crocheting</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, content, tablinks;
+        content = document.getElementsByClassName("content-section");
+        for (i = 0; i < content.length; i++) {
+            content[i].style.display = "none";
+            content[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        setTimeout(() => {
+            document.getElementById(tabName).classList.add("active");
+        }, 10);
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
