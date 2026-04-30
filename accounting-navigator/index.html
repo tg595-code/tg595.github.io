@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toyesha's RU Accounting Navigator</title>
+    <title>Toyesha's Accounting Navigator</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -27,25 +27,25 @@
                         <option>Freshman (Pre-Business)</option>
                         <option>Sophomore (Pre-Business)</option>
                         <option>Junior (RBS Admitted)</option>
-                        <option>Senior (Major Focus)</option>
+                        <option>Senior (Accounting Major)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Target Graduation Date (120 Credits):</label>
+                    <label>Target Graduation Date:</label>
                     <input type="text" id="grad-date" placeholder="e.g. January 2027">
                 </div>
                 <button class="action-btn" onclick="generateRoadmap()">Generate My Plan</button>
             </div>
 
             <div id="personalized-results" class="hidden">
-                <div class="result-box"><h3>✅ SAS Core</h3><ul id="sas-list"></ul></div>
+                <div class="result-box"><h3>✅ SAS Core Requirements</h3><ul id="sas-list"></ul></div>
                 <div class="result-box"><h3>🏦 RBS Foundational & Business Core</h3><ul id="rbs-list"></ul></div>
                 <div class="result-box"><h3>📊 Accounting Major Requirements</h3><ul id="acc-list"></ul></div>
                 <button class="secondary-btn" onclick="resetSurvey()">← Edit Profile</button>
             </div>
         </section>
 
-        <section id="branding" class="tab-content hidden"><h2>Strategy</h2><div id="branding-guide"></div></section>
+        <section id="branding" class="tab-content hidden"><h2>Digital Strategy</h2><div id="branding-guide"></div></section>
         <section id="tools" class="tab-content hidden"><h2>CPA Tools</h2><div id="prep-tools-list"></div></section>
         <section id="engagement" class="tab-content hidden"><h2>Involvement</h2><div id="clubs-list"></div></section>
     </main>
