@@ -1,23 +1,20 @@
 {
-  "academicPlan": [
-    { "year": "Freshman", "focus": "SAS Core: Expos & Calc 135. Join Accounting Society." },
-    { "year": "Sophomore", "focus": "Intro Financial & Managerial. Aim for Summer Leadership Programs (SLPs)." },
-    { "year": "Junior", "focus": "Intermediate I & II. Recruiting peaks in September for Big 4." },
-    { "year": "Senior", "focus": "Tax & Advanced. Finalize 120-credit vs 150-credit pathway." }
+  "curriculum": {
+    "sasCore": ["Expository Writing", "Calculus 135", "Arts & Humanities", "Social Science & History", "Natural Sciences"],
+    "rbsCore": ["Intro to Financial Accounting", "Intro to Managerial Accounting", "Business Forum", "Stats for Business", "Computer App for Business"],
+    "accountingMajor": ["Intermediate Accounting I", "Intermediate Accounting II", "Income Tax", "Cost Accounting", "Auditing", "Accounting Information Systems"]
+  },
+  "cpaTools": [
+    { "name": "Becker", "desc": "Industry standard, usually firm-sponsored." },
+    { "name": "uWorld", "desc": "Visual learners' favorite with Peter Olinto." },
+    { "name": "Surgent", "desc": "AI-driven study paths." }
   ],
   "branding": [
-    { "platform": "Handshake", "advice": "Mandatory for Rutgers. RSVP for 'Meet the Firms' here to get on recruiter lists." },
-    { "platform": "LinkedIn", "advice": "Use Rutgers NetID for free LinkedIn Learning. Add 'Excel for Accountants' to your profile." },
-    { "platform": "Headshots", "advice": "Look for free RBS headshot events in the 100 Rock atrium." }
-  ],
-  "cpaTools": [
-    { "name": "Becker", "desc": "The industry standard. Usually paid for by your firm once you sign an offer." },
-    { "name": "uWorld (Peter Olinto)", "desc": "Best video lectures. Peter Olinto is a fan-favorite at Rutgers!" },
-    { "name": "Surgent", "desc": "Uses AI to identify your weak spots and reduce total study time." }
+    { "platform": "Handshake", "advice": "RSVP for Meet the Firms events." },
+    { "platform": "LinkedIn", "advice": "Use Rutgers NetID for free Learning certs." }
   ],
   "clubs": [
-    { "name": "Beta Alpha Psi (BAP)", "desc": "The Honor Society. Essential for networking with the Big 4." },
-    { "name": "Accounting Society", "desc": "Great for early-stage students to learn about the career." },
-    { "name": "TeamUP", "desc": "RBS flagship mentorship program connecting you to alumni." }
+    { "name": "Beta Alpha Psi", "desc": "The accounting honor society." },
+    { "name": "TeamUP", "desc": "RBS Mentorship connecting you to alumni." }
   ]
 }
