@@ -1,0 +1,21 @@
+{
+    "academicPlan": [
+      { "year": "Freshman", "focus": "SAS Core: Expos & Calc 135. Join Accounting Society." },
+      { "year": "Sophomore", "focus": "Intro Financial (010:272) & Managerial (010:275). Aim for B or better." },
+      { "year": "Junior", "focus": "Intermediate I & II. Recruiting peaks in September for Big 4." },
+      { "year": "Senior", "focus": "Tax & Advanced. Finalize 120 vs 150 CPA Pathway." }
+    ],
+    "cpaTools": [
+      { "name": "Becker", "desc": "The industry standard. Usually firm-sponsored." },
+      { "name": "uWorld", "desc": "Great for visual learners and legendary video lectures." },
+      { "name": "Surgent", "desc": "Uses AI to identify weak spots and reduce study time." }
+    ],
+    "branding": [
+      { "platform": "Handshake", "advice": "Mandatory for RBS recruiting events and internships." },
+      { "platform": "LinkedIn", "advice": "Use Rutgers NetID for free LinkedIn Learning certificates." }
+    ],
+    "clubs": [
+      { "name": "Beta Alpha Psi", "desc": "The premier honor society for accounting students." },
+      { "name": "TeamUP", "desc": "RBS flagship mentorship connecting you to alumni." }
+    ]
+  }

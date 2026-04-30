@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutgers Accounting Navigator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>Rutgers Accounting Navigator</h1>
+        <nav>
+            <button onclick="showTab('plan')">📅 4-Year Plan</button>
+            <button onclick="showTab('branding')">📱 Branding</button>
+            <button onclick="showTab('tools')">🛠️ Study Tools</button>
+            <button onclick="showTab('engagement')">🤝 Clubs</button>
+        </nav>
+    </header>
+
+    <main id="app-container">
+        <section id="plan" class="tab-content">
+            <h2>Academic Roadmap (RBS + SAS Core)</h2>
+            <div id="plan-list">Loading...</div>
+        </section>
+
+        <section id="branding" class="tab-content hidden">
+            <h2>Handshake & LinkedIn Strategy</h2>
+            <div id="branding-guide"></div>
+        </section>
+
+        <section id="tools" class="tab-content hidden">
+            <h2>CPA Prep & Exam Tools</h2>
+            <div id="prep-tools-list"></div>
+        </section>
+
+        <section id="engagement" class="tab-content hidden">
+            <h2>Rutgers Involvement</h2>
+            <div id="clubs-list"></div>
+        </section>
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+</html>

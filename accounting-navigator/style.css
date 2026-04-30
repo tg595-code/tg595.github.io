@@ -1,0 +1,26 @@
+:root {
+    --ru-red: #cc0033;
+    --dark: #333;
+    --light: #f9f9f9;
+}
+
+body { font-family: 'Segoe UI', sans-serif; background: var(--light); margin: 0; padding-bottom: 50px; }
+header { background: var(--ru-red); color: white; padding: 30px; text-align: center; }
+nav { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+
+nav button { 
+    background: white; color: var(--ru-red); border: none; padding: 10px 20px; 
+    border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.2s;
+}
+
+nav button:hover { background: #eee; transform: scale(1.05); }
+
+#app-container { max-width: 850px; margin: 30px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+.year-block, .tool-card, .guide-block { 
+    border-left: 5px solid var(--ru-red); padding: 15px; background: #fffcfc; 
+    margin-bottom: 20px; border-radius: 0 8px 8px 0; 
+}
+
+.hidden { display: none; }
+h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
