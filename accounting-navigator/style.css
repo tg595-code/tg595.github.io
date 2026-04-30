@@ -1,27 +1,23 @@
-/* 1. SETUP & VARIABLES */
 :root {
     --ru-red: #cc0033;
     --dark: #222;
     --light-gray: #f4f4f4;
     --white: #ffffff;
-    --shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-family: 'Segoe UI', sans-serif; 
     background-color: var(--light-gray); 
     margin: 0; 
     padding-bottom: 50px;
     color: var(--dark);
 }
 
-/* 2. HEADER & NAVIGATION */
 header { 
     background-color: var(--ru-red); 
     color: var(--white); 
     padding: 2rem; 
     text-align: center;
-    box-shadow: var(--shadow);
 }
 
 nav { 
@@ -29,7 +25,6 @@ nav {
     justify-content: center; 
     gap: 12px; 
     margin-top: 15px; 
-    flex-wrap: wrap;
 }
 
 nav button { 
@@ -38,38 +33,27 @@ nav button {
     border: none; 
     font-weight: bold; 
     cursor: pointer; 
-    transition: 0.3s; 
     background: var(--white);
     color: var(--ru-red);
 }
 
-nav button:hover { 
-    background: #f0f0f0; 
-    transform: translateY(-2px); 
-}
-
-/* 3. MAIN CONTAINER */
 #app-container { 
     max-width: 800px; 
     margin: 30px auto; 
     background: var(--white); 
     padding: 30px; 
     border-radius: 12px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
 }
 
-/* 4. FORM ELEMENTS */
 .form-group { margin-bottom: 20px; }
-
-label { display: block; font-weight: bold; margin-bottom: 8px; }
 
 select, input { 
     width: 100%; 
     padding: 12px; 
-    border: 2px solid #ddd; 
+    border: 1px solid #ddd; 
     border-radius: 8px; 
-    font-size: 1rem;
-    box-sizing: border-box; /* Prevents input from sticking out */
+    box-sizing: border-box; 
 }
 
 .action-btn { 
@@ -80,38 +64,15 @@ select, input {
     border-radius: 8px; 
     cursor: pointer; 
     width: 100%; 
-    font-size: 1.1rem; 
     font-weight: bold;
-    transition: background 0.3s;
 }
 
-.action-btn:hover { background: #990026; }
-
-.secondary-btn { 
-    background: none; 
-    border: 1px solid var(--ru-red); 
-    color: var(--ru-red); 
-    padding: 8px 15px; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    margin-top: 20px;
-}
-
-/* 5. RESULTS & CONTENT CARDS */
 .result-box, .guide-block, .tool-card { 
     border-left: 5px solid var(--ru-red); 
     background: #fffafa; 
     padding: 15px; 
-    border-radius: 0 8px 8px 0; 
     margin-bottom: 20px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.02);
+    border-radius: 0 8px 8px 0; 
 }
 
-.result-box h3 { margin-top: 0; color: var(--ru-red); }
-
-ul { padding-left: 20px; }
-
-li { margin-bottom: 10px; line-height: 1.4; }
-
-/* 6. UTILITY */
 .hidden { display: none !important; }
