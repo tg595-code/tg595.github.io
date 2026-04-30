@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RU Accounting Navigator</title>
+    <title>Toyesha's RU Accounting Navigator</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -21,68 +21,34 @@
         <section id="plan" class="tab-content">
             <h2>Interactive Academic Advisor</h2>
             <div id="survey-container">
-                <p>Fill out your details to generate your Rutgers path:</p>
-                
                 <div class="form-group">
-                    <label>What is your current year?</label>
+                    <label>Current Status:</label>
                     <select id="user-year">
-                        <option value="Freshman">Freshman</option>
-                        <option value="Sophomore">Sophomore</option>
-                        <option value="Junior">Junior</option>
-                        <option value="Senior">Senior</option>
+                        <option>Freshman (Pre-Business)</option>
+                        <option>Sophomore (Pre-Business)</option>
+                        <option>Junior (RBS Admitted)</option>
+                        <option>Senior (Major Focus)</option>
                     </select>
                 </div>
-
                 <div class="form-group">
-                    <label>Expected Graduation Date:</label>
-                    <input type="text" id="grad-date" placeholder="e.g., May 2027">
+                    <label>Target Graduation Date (120 Credits):</label>
+                    <input type="text" id="grad-date" placeholder="e.g. January 2027">
                 </div>
-
-                <div class="form-group">
-                    <label>Target Internship Type:</label>
-                    <select id="internship-pref">
-                        <option value="Big 4">Big 4 (PwC, Deloitte, EY, KPMG)</option>
-                        <option value="Mid-Tier">Mid-Tier / Regional</option>
-                        <option value="Corporate">Corporate / Private Industry</option>
-                    </select>
-                </div>
-
                 <button class="action-btn" onclick="generateRoadmap()">Generate My Plan</button>
             </div>
 
             <div id="personalized-results" class="hidden">
-                <div class="result-box">
-                    <h3>✅ SAS Core Requirements</h3>
-                    <ul id="sas-list"></ul>
-                </div>
-                <div class="result-box">
-                    <h3>🏦 RBS Business Core</h3>
-                    <ul id="rbs-list"></ul>
-                </div>
-                <div class="result-box">
-                    <h3>📊 Accounting Major Requirements</h3>
-                    <ul id="acc-list"></ul>
-                </div>
-                <button class="secondary-btn" onclick="resetSurvey()">← Edit My Info</button>
+                <div class="result-box"><h3>✅ SAS Core</h3><ul id="sas-list"></ul></div>
+                <div class="result-box"><h3>🏦 RBS Foundational & Business Core</h3><ul id="rbs-list"></ul></div>
+                <div class="result-box"><h3>📊 Accounting Major Requirements</h3><ul id="acc-list"></ul></div>
+                <button class="secondary-btn" onclick="resetSurvey()">← Edit Profile</button>
             </div>
         </section>
 
-        <section id="branding" class="tab-content hidden">
-            <h2>Digital Presence Strategy</h2>
-            <div id="branding-guide"></div>
-        </section>
-
-        <section id="tools" class="tab-content hidden">
-            <h2>CPA Prep & Exam Tools</h2>
-            <div id="prep-tools-list"></div>
-        </section>
-
-        <section id="engagement" class="tab-content hidden">
-            <h2>Rutgers Involvement</h2>
-            <div id="clubs-list"></div>
-        </section>
+        <section id="branding" class="tab-content hidden"><h2>Strategy</h2><div id="branding-guide"></div></section>
+        <section id="tools" class="tab-content hidden"><h2>CPA Tools</h2><div id="prep-tools-list"></div></section>
+        <section id="engagement" class="tab-content hidden"><h2>Involvement</h2><div id="clubs-list"></div></section>
     </main>
-
     <script src="./app.js"></script>
 </body>
 </html>
