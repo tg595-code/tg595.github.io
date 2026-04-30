@@ -8,21 +8,26 @@
       "Arts & Humanities (2 courses)"
     ],
     "foundationalCore": [
-      "01:198:170 Computer Applications for Business",
-      "01:220:102 Intro to Microeconomics",
-      "01:220:103 Intro to Macroeconomics",
-      "01:640:135 Calculus I",
-      "01:960:285 Introductory Stats for Business"
+      "01:198:170 Computer Applications for Business (3)",
+      "01:220:102 Introduction to Microeconomics (3)",
+      "01:220:103 Introduction to Macroeconomics (3)",
+      "01:640:135 Calculus I (4)",
+      "01:960:285 Introductory Statistics for Business (3)"
     ],
     "businessCore": [
-      "33:011:300 Business Forum",
-      "33:010:272 Intro to Financial Accounting",
-      "33:010:275 Intro to Managerial Accounting",
-      "33:140:320 Business Law I",
-      "33:390:300 Financial Management",
-      "33:620:301 Intro to Management",
-      "33:630:301 Intro to Marketing",
-      "33:799:301 Intro to Supply Chain Management"
+      "33:010:272 Introduction to Financial Accounting (3)",
+      "33:010:275 Introduction to Managerial Accounting (3)",
+      "33:011:301/302/303 Career Journey Series (3 credits total)",
+      "33:140:320 Business Law I (3) or Business Ethics",
+      "33:390:300 Financial Management (3)",
+      "33:620:301 Introduction to Management (3)",
+      "33:620:302 Management Skills (3)",
+      "33:620:492 Business Policy and Strategy (3)",
+      "33:136:370 Management Information Systems (3)",
+      "33:136:385 Statistical Methods in Business (3)",
+      "33:136:386 Operations Management (3)",
+      "33:630:301 Introduction to Marketing (3)",
+      "33:799:301 Introduction to Supply Chain Management (3)"
     ],
     "accountingMajor": [
       "33:010:325 Intermediate Accounting I",
