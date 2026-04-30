@@ -10,7 +10,7 @@
     <header>
         <h1>Rutgers Accounting Navigator</h1>
         <nav>
-            <button onclick="showTab('plan')">📅 4-Year Plan</button>
+            <button onclick="showTab('plan')">📅 Interactive Roadmap</button>
             <button onclick="showTab('branding')">📱 Branding</button>
             <button onclick="showTab('tools')">🛠️ Study Tools</button>
             <button onclick="showTab('engagement')">🤝 Clubs</button>
@@ -19,8 +19,48 @@
 
     <main id="app-container">
         <section id="plan" class="tab-content">
-            <h2>Academic Roadmap (RBS + SAS Core)</h2>
-            <div id="plan-list">Loading data...</div>
+            <h2>Personalized Academic Path</h2>
+            <div id="survey-container">
+                <p>Complete your profile to see your requirements:</p>
+                <div class="form-group">
+                    <label>Current Year:</label>
+                    <select id="user-year">
+                        <option value="Freshman">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Target Graduation:</label>
+                    <input type="text" id="grad-date" placeholder="e.g. May 2027">
+                </div>
+                <div class="form-group">
+                    <label>Internship Goal:</label>
+                    <select id="internship-pref">
+                        <option value="Big 4">Big 4 (PwC, Deloitte, etc.)</option>
+                        <option value="Mid-Tier">Mid-Tier / Regional</option>
+                        <option value="Industry">Private Industry / Corporate</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="generateRoadmap()">Generate My Plan</button>
+            </div>
+
+            <div id="personalized-results" class="hidden">
+                <div class="result-box">
+                    <h3>✅ SAS Core Requirements</h3>
+                    <ul id="sas-list"></ul>
+                </div>
+                <div class="result-box">
+                    <h3>🏦 RBS Business Core</h3>
+                    <ul id="rbs-list"></ul>
+                </div>
+                <div class="result-box">
+                    <h3>📊 Accounting Major Requirements</h3>
+                    <ul id="acc-list"></ul>
+                </div>
+                <button class="secondary-btn" onclick="resetSurvey()">Edit Profile</button>
+            </div>
         </section>
 
         <section id="branding" class="tab-content hidden">
