@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rutgers Accounting Navigator</title>
+    <title>RU Accounting Navigator</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <header>
         <h1>Rutgers Accounting Navigator</h1>
         <nav>
-            <button onclick="showTab('plan')">📅 Interactive Roadmap</button>
+            <button onclick="showTab('plan')">📅 Roadmap</button>
             <button onclick="showTab('branding')">📱 Branding</button>
             <button onclick="showTab('tools')">🛠️ Study Tools</button>
             <button onclick="showTab('engagement')">🤝 Clubs</button>
@@ -19,11 +19,12 @@
 
     <main id="app-container">
         <section id="plan" class="tab-content">
-            <h2>Personalized Academic Path</h2>
+            <h2>Interactive Academic Advisor</h2>
             <div id="survey-container">
-                <p>Complete your profile to see your requirements:</p>
+                <p>Fill out your details to generate your Rutgers path:</p>
+                
                 <div class="form-group">
-                    <label>Current Year:</label>
+                    <label>What is your current year?</label>
                     <select id="user-year">
                         <option value="Freshman">Freshman</option>
                         <option value="Sophomore">Sophomore</option>
@@ -31,18 +32,21 @@
                         <option value="Senior">Senior</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <label>Target Graduation:</label>
-                    <input type="text" id="grad-date" placeholder="e.g. May 2027">
+                    <label>Expected Graduation Date:</label>
+                    <input type="text" id="grad-date" placeholder="e.g., May 2027">
                 </div>
+
                 <div class="form-group">
-                    <label>Internship Goal:</label>
+                    <label>Target Internship Type:</label>
                     <select id="internship-pref">
-                        <option value="Big 4">Big 4 (PwC, Deloitte, etc.)</option>
+                        <option value="Big 4">Big 4 (PwC, Deloitte, EY, KPMG)</option>
                         <option value="Mid-Tier">Mid-Tier / Regional</option>
-                        <option value="Industry">Private Industry / Corporate</option>
+                        <option value="Corporate">Corporate / Private Industry</option>
                     </select>
                 </div>
+
                 <button class="action-btn" onclick="generateRoadmap()">Generate My Plan</button>
             </div>
 
@@ -59,12 +63,12 @@
                     <h3>📊 Accounting Major Requirements</h3>
                     <ul id="acc-list"></ul>
                 </div>
-                <button class="secondary-btn" onclick="resetSurvey()">Edit Profile</button>
+                <button class="secondary-btn" onclick="resetSurvey()">← Edit My Info</button>
             </div>
         </section>
 
         <section id="branding" class="tab-content hidden">
-            <h2>Handshake & LinkedIn Strategy</h2>
+            <h2>Digital Presence Strategy</h2>
             <div id="branding-guide"></div>
         </section>
 
