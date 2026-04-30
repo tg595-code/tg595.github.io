@@ -1,20 +1,42 @@
 {
   "curriculum": {
-    "sasCore": ["Expository Writing", "Calculus 135", "Arts & Humanities", "Social Science & History", "Natural Sciences"],
-    "rbsCore": ["Intro to Financial Accounting", "Intro to Managerial Accounting", "Business Forum", "Stats for Business", "Computer App for Business"],
-    "accountingMajor": ["Intermediate Accounting I", "Intermediate Accounting II", "Income Tax", "Cost Accounting", "Auditing", "Accounting Information Systems"]
+    "sasCore": [
+      "Expository Writing (01:355:101)",
+      "Calculus 135",
+      "220:102 Microeconomics & 220:103 Macroeconomics",
+      "Arts & Humanities (AHp/AHr)",
+      "Historical/Social Analysis (HST/SCL)",
+      "Natural Sciences (NS)"
+    ],
+    "rbsCore": [
+      "Business Forum (33:011:300)",
+      "Computer Applications for Business (33:136:370)",
+      "Statistical Methods for Business (33:960:285)",
+      "Intro to Financial Accounting (33:010:272)",
+      "Intro to Managerial Accounting (33:010:275)",
+      "Finance, Marketing, and Supply Chain Cores"
+    ],
+    "accountingMajor": [
+      "Intermediate Accounting I (33:010:325)",
+      "Intermediate Accounting II (33:010:326)",
+      "Cost Accounting (33:010:310)",
+      "Income Tax (33:010:421)",
+      "Accounting Information Systems (33:010:451)",
+      "Auditing (33:010:415)",
+      "Advanced Accounting (33:010:401)"
+    ]
   },
   "cpaTools": [
-    { "name": "Becker", "desc": "Industry standard, usually firm-sponsored." },
-    { "name": "uWorld", "desc": "Visual learners' favorite with Peter Olinto." },
-    { "name": "Surgent", "desc": "AI-driven study paths." }
+    { "name": "Becker CPA Review", "desc": "The gold standard. Most firms pay for this once you sign an offer." },
+    { "name": "uWorld (Peter Olinto)", "desc": "Best video lectures. Peter Olinto is a Rutgers fan-favorite!" },
+    { "name": "Surgent", "desc": "Uses AI to identify your weak spots and reduce study time." }
   ],
   "branding": [
-    { "platform": "Handshake", "advice": "RSVP for Meet the Firms events." },
-    { "platform": "LinkedIn", "advice": "Use Rutgers NetID for free Learning certs." }
+    { "platform": "Handshake", "advice": "Mandatory for Rutgers. RSVP for 'Meet the Firms' here to get on recruiter lists." },
+    { "platform": "LinkedIn", "advice": "Use Rutgers NetID for free LinkedIn Learning certificates." }
   ],
   "clubs": [
-    { "name": "Beta Alpha Psi", "desc": "The accounting honor society." },
-    { "name": "TeamUP", "desc": "RBS Mentorship connecting you to alumni." }
+    { "name": "Beta Alpha Psi", "desc": "The premier honor society for accounting students." },
+    { "name": "Rutgers Accounting Association", "desc": "Great for networking and learning about the industry." }
   ]
 }
