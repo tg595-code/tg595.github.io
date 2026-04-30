@@ -1,70 +1,67 @@
 async function init() {
-    const planDiv = document.getElementById('plan-list');
-    const brandingDiv = document.getElementById('branding-guide');
-    const toolsDiv = document.getElementById('prep-tools-list');
-    const clubDiv = document.getElementById('clubs-list');
-
     try {
-        // Use relative path for GitHub Subfolders
         const response = await fetch('./questions.json');
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error("Could not load data");
+        window.appData = await response.json(); // Store data globally for the survey
 
-        const data = await response.json();
-
-        // 1. Render Academic Plan
-        planDiv.innerHTML = ""; 
-        data.academicPlan.forEach(p => {
-            planDiv.innerHTML += `
-                <div class="year-block">
-                    <h3>${p.year}</h3>
-                    <p>${p.focus}</p>
-                </div>`;
-        });
-
-        // 2. Render Branding (Handshake/LinkedIn)
-        brandingDiv.innerHTML = "";
-        data.branding.forEach(item => {
-            brandingDiv.innerHTML += `
-                <div class="guide-block">
-                    <strong>${item.platform}</strong>
-                    <p>${item.advice}</p>
-                </div>`;
-        });
-
-        // 3. Render Study Tools (Becker/uWorld)
-        toolsDiv.innerHTML = "";
-        data.cpaTools.forEach(tool => {
-            toolsDiv.innerHTML += `
-                <div class="tool-card">
-                    <h4>${tool.name}</h4>
-                    <p>${tool.desc}</p>
-                </div>`;
-        });
-
-        // 4. Render Clubs
-        clubDiv.innerHTML = "";
-        data.clubs.forEach(c => {
-            clubDiv.innerHTML += `
-                <div class="guide-block">
-                    <strong>${c.name}</strong>
-                    <p>${c.desc}</p>
-                </div>`;
-        });
-
+        // Load content for static tabs immediately
+        renderStaticTabs();
     } catch (error) {
-        console.error("App Error:", error);
-        planDiv.innerHTML = `<p style="color:red">Error: Failed to fetch. Ensure questions.json is in the same folder on GitHub!</p>`;
+        console.error(error);
     }
+}
+
+function renderStaticTabs() {
+    const data = window.appData;
+    
+    // Branding
+    const brandingDiv = document.getElementById('branding-guide');
+    data.branding.forEach(item => {
+        brandingDiv.innerHTML += `<div class="guide-block"><strong>${item.platform}</strong><p>${item.advice}</p></div>`;
+    });
+
+    // Tools
+    const toolsDiv = document.getElementById('prep-tools-list');
+    data.cpaTools.forEach(tool => {
+        toolsDiv.innerHTML += `<div class="tool-card"><h4>${tool.name}</h4><p>${tool.desc}</p></div>`;
+    });
+
+    // Clubs
+    const clubDiv = document.getElementById('clubs-list');
+    data.clubs.forEach(c => {
+        clubDiv.innerHTML += `<p><strong>${c.name}:</strong> ${c.desc}</p>`;
+    });
+}
+
+function generateRoadmap() {
+    const year = document.getElementById('user-year').value;
+    const data = window.appData.curriculum;
+
+    // Show results, hide survey
+    document.getElementById('survey-container').classList.add('hidden');
+    document.getElementById('personalized-results').classList.remove('hidden');
+
+    // Fill SAS Core
+    const sasList = document.getElementById('sas-list');
+    sasList.innerHTML = data.sasCore.map(item => `<li>${item}</li>`).join('');
+
+    // Fill RBS Core
+    const rbsList = document.getElementById('rbs-list');
+    rbsList.innerHTML = data.rbsCore.map(item => `<li>${item}</li>`).join('');
+
+    // Fill Accounting Core
+    const accList = document.getElementById('acc-list');
+    accList.innerHTML = data.accountingMajor.map(item => `<li>${item}</li>`).join('');
+}
+
+function resetSurvey() {
+    document.getElementById('survey-container').classList.remove('hidden');
+    document.getElementById('personalized-results').classList.add('hidden');
 }
 
 function showTab(id) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
-    const target = document.getElementById(id);
-    if (target) target.classList.remove('hidden');
+    document.getElementById(id).classList.remove('hidden');
 }
 
-// Start the app when the page loads
 window.onload = init;
