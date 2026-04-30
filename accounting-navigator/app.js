@@ -1,61 +1,72 @@
+// Global variable to hold the data once loaded
+let appData = null;
+
 async function init() {
     try {
         const response = await fetch('./questions.json');
-        if (!response.ok) throw new Error("Could not load data");
-        window.appData = await response.json(); // Store data globally for the survey
+        if (!response.ok) throw new Error("Could not load data file.");
+        appData = await response.json();
 
-        // Load content for static tabs immediately
+        // Populate the static tabs (Branding, Tools, Clubs)
         renderStaticTabs();
     } catch (error) {
-        console.error(error);
+        console.error("Initialization Error:", error);
+        document.getElementById('plan-list').innerHTML = `<p style="color:red">Error: Could not load data. Ensure questions.json is in the folder!</p>`;
     }
 }
 
 function renderStaticTabs() {
-    const data = window.appData;
-    
     // Branding
     const brandingDiv = document.getElementById('branding-guide');
-    data.branding.forEach(item => {
+    appData.branding.forEach(item => {
         brandingDiv.innerHTML += `<div class="guide-block"><strong>${item.platform}</strong><p>${item.advice}</p></div>`;
     });
 
     // Tools
     const toolsDiv = document.getElementById('prep-tools-list');
-    data.cpaTools.forEach(tool => {
+    appData.cpaTools.forEach(tool => {
         toolsDiv.innerHTML += `<div class="tool-card"><h4>${tool.name}</h4><p>${tool.desc}</p></div>`;
     });
 
     // Clubs
     const clubDiv = document.getElementById('clubs-list');
-    data.clubs.forEach(c => {
-        clubDiv.innerHTML += `<p><strong>${c.name}:</strong> ${c.desc}</p>`;
+    appData.clubs.forEach(c => {
+        clubDiv.innerHTML += `<div class="guide-block"><strong>${c.name}</strong><p>${c.desc}</p></div>`;
     });
 }
 
 function generateRoadmap() {
-    const year = document.getElementById('user-year').value;
-    const data = window.appData.curriculum;
+    if (!appData) return;
 
-    // Show results, hide survey
-    document.getElementById('survey-container').classList.add('hidden');
+    // 1. Hide the survey form and show results
+    document.getElementById('survey-container').style.display = 'none';
     document.getElementById('personalized-results').classList.remove('hidden');
 
-    // Fill SAS Core
+    // 2. Clear old lists
     const sasList = document.getElementById('sas-list');
-    sasList.innerHTML = data.sasCore.map(item => `<li>${item}</li>`).join('');
-
-    // Fill RBS Core
     const rbsList = document.getElementById('rbs-list');
-    rbsList.innerHTML = data.rbsCore.map(item => `<li>${item}</li>`).join('');
-
-    // Fill Accounting Core
     const accList = document.getElementById('acc-list');
-    accList.innerHTML = data.accountingMajor.map(item => `<li>${item}</li>`).join('');
+    
+    sasList.innerHTML = "";
+    rbsList.innerHTML = "";
+    accList.innerHTML = "";
+
+    // 3. Populate lists from JSON
+    appData.curriculum.sasCore.forEach(course => {
+        sasList.innerHTML += `<li>${course}</li>`;
+    });
+
+    appData.curriculum.rbsCore.forEach(course => {
+        rbsList.innerHTML += `<li>${course}</li>`;
+    });
+
+    appData.curriculum.accountingMajor.forEach(course => {
+        accList.innerHTML += `<li>${course}</li>`;
+    });
 }
 
 function resetSurvey() {
-    document.getElementById('survey-container').classList.remove('hidden');
+    document.getElementById('survey-container').style.display = 'block';
     document.getElementById('personalized-results').classList.add('hidden');
 }
 
