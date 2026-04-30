@@ -1,36 +1,31 @@
 async function init() {
+    const planDiv = document.getElementById('plan-list');
+    const brandingDiv = document.getElementById('branding-guide');
+    const toolsDiv = document.getElementById('prep-tools-list');
+    const clubDiv = document.getElementById('clubs-list');
+
     try {
+        // Use relative path for GitHub Subfolders
         const response = await fetch('./questions.json');
         
         if (!response.ok) {
-            throw new Error(`Status: ${response.status}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
 
         // 1. Render Academic Plan
-        const planDiv = document.getElementById('plan-list');
         planDiv.innerHTML = ""; 
         data.academicPlan.forEach(p => {
             planDiv.innerHTML += `
                 <div class="year-block">
                     <h3>${p.year}</h3>
-                    <p><strong>Focus:</strong> ${p.focus}</p>
+                    <p>${p.focus}</p>
                 </div>`;
         });
 
-        // 2. Render CPA Tools
-        const toolsDiv = document.getElementById('prep-tools-list');
-        data.cpaTools.forEach(tool => {
-            toolsDiv.innerHTML += `
-                <div class="tool-card">
-                    <h4>${tool.name}</h4>
-                    <p>${tool.desc}</p>
-                </div>`;
-        });
-
-        // 3. Render Branding
-        const brandingDiv = document.getElementById('branding-guide');
+        // 2. Render Branding (Handshake/LinkedIn)
+        brandingDiv.innerHTML = "";
         data.branding.forEach(item => {
             brandingDiv.innerHTML += `
                 <div class="guide-block">
@@ -39,16 +34,29 @@ async function init() {
                 </div>`;
         });
 
+        // 3. Render Study Tools (Becker/uWorld)
+        toolsDiv.innerHTML = "";
+        data.cpaTools.forEach(tool => {
+            toolsDiv.innerHTML += `
+                <div class="tool-card">
+                    <h4>${tool.name}</h4>
+                    <p>${tool.desc}</p>
+                </div>`;
+        });
+
         // 4. Render Clubs
-        const clubDiv = document.getElementById('clubs-list');
+        clubDiv.innerHTML = "";
         data.clubs.forEach(c => {
-            clubDiv.innerHTML += `<p><strong>${c.name}:</strong> ${c.desc}</p>`;
+            clubDiv.innerHTML += `
+                <div class="guide-block">
+                    <strong>${c.name}</strong>
+                    <p>${c.desc}</p>
+                </div>`;
         });
 
     } catch (error) {
         console.error("App Error:", error);
-        document.getElementById('plan-list').innerHTML = 
-            `<p style="color:red">Error: Failed to fetch. This is normal on local files; upload to GitHub to fix!</p>`;
+        planDiv.innerHTML = `<p style="color:red">Error: Failed to fetch. Ensure questions.json is in the same folder on GitHub!</p>`;
     }
 }
 
@@ -58,4 +66,5 @@ function showTab(id) {
     if (target) target.classList.remove('hidden');
 }
 
+// Start the app when the page loads
 window.onload = init;
