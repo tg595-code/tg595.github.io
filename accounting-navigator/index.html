@@ -31,27 +31,28 @@
                 </div>
                 <div id="step2" class="hidden">
                     <p>2. Choose your pathway:</p>
-                    <select id="path"><option>120 Credits</option><option>150 Credits</option></select>
+                    <select id="path"><option>120 Credits + 2yrs Working</option><option>150 Credits + 1yr Working</option></select>
                     <button class="action-btn" onclick="nextStep(2)">Next</button>
                 </div>
                 <div id="step3" class="hidden">
                     <p>3. Target Graduation Date:</p>
-                    <input type="text" id="grad-date" placeholder="MM/YYYY">
+                    <input type="text" id="grad-date" placeholder="e.g. May 2027">
                     <button class="action-btn" onclick="generateRoadmap()">Show My Plan</button>
                 </div>
             </div>
 
             <div id="personalized-results" class="hidden">
                 <div class="summary-card">
-                    <p>Check off what you have finished, then save your remaining list:</p>
-                    <button class="action-btn" style="background:#2ecc71;" onclick="downloadRemaining()">💾 Download Remaining Classes (.txt)</button>
+                    <h3>Interactive Checklist</h3>
+                    <p>Check the courses you have already completed. Then click below to generate a printable PDF of your remaining schedule.</p>
+                    <button class="action-btn" style="background:#2ecc71;" onclick="printChecklist()">🖨️ Create Printable PDF of Remaining Classes</button>
                 </div>
                 <div id="checklist-area"></div>
-                <button class="action-btn" style="background:#666;" onclick="location.reload()">Start Over</button>
+                <button class="action-btn" style="background:#666;" onclick="location.reload()">Reset Advisor</button>
             </div>
         </section>
 
-        <section id="branding" class="tab-content hidden"><h2>Digital Branding</h2><div id="branding-list"></div></section>
+        <section id="branding" class="tab-content hidden"><h2>Branding Strategies</h2><div id="branding-list"></div></section>
         <section id="tools" class="tab-content hidden"><h2>CPA Study Tools</h2><div id="tools-list"></div></section>
         <section id="engagement" class="tab-content hidden"><h2>Student Organizations</h2><div id="clubs-list"></div></section>
     </main>
