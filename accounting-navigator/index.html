@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rutgers Accounting Navigator</title>
+    <title>Accounting Navigator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,39 +20,33 @@
         <section id="plan" class="tab-content">
             <div id="survey-container">
                 <div id="step1">
-                    <p>1. What is your current status?</p>
-                    <select id="user-year">
-                        <option value="freshman">Freshman</option>
-                        <option value="sophomore">Sophomore</option>
-                        <option value="junior">Junior</option>
-                        <option value="senior">Senior</option>
-                    </select>
+                    <p>1. Current Status:</p>
+                    <select id="user-year"><option value="freshman">Freshman</option><option value="sophomore">Sophomore</option><option value="junior">Junior</option><option value="senior">Senior</option></select>
                     <button class="action-btn" onclick="nextStep(1)">Next</button>
                 </div>
                 <div id="step2" class="hidden">
-                    <p>2. Choose your pathway:</p>
+                    <p>2. CPA Pathway:</p>
                     <select id="path"><option>120 Credits</option><option>150 Credits</option></select>
                     <button class="action-btn" onclick="nextStep(2)">Next</button>
                 </div>
                 <div id="step3" class="hidden">
                     <p>3. Target Graduation Date:</p>
-                    <input type="text" id="grad-date" placeholder="e.g. May 2027">
+                    <input type="text" id="grad-date" placeholder="May 2027">
                     <button class="action-btn" onclick="generateRoadmap()">Show My Plan</button>
                 </div>
             </div>
 
             <div id="personalized-results" class="hidden">
                 <div class="summary-card">
-                    <p><strong>Step 1:</strong> Check off the courses you have passed.</p>
-                    <p><strong>Step 2:</strong> Click below to create a PDF of the remaining courses.</p>
-                    <button class="action-btn" style="background:#2ecc71;" onclick="printRemainingPDF()">🖨️ Create PDF of Remaining Classes</button>
+                    <p>Check mark what you have completed. Then click <strong>Submit</strong> to download your remaining class list as a PDF.</p>
+                    <button class="action-btn" style="background:#2ecc71;" onclick="generatePDF()">Submit & Download PDF</button>
                 </div>
                 <div id="checklist-area"></div>
                 <button class="action-btn" style="background:#666;" onclick="location.reload()">Start Over</button>
             </div>
         </section>
 
-        <section id="branding" class="tab-content hidden"><h2>Branding Strategies</h2><div id="branding-list"></div></section>
+        <section id="branding" class="tab-content hidden"><h2>Digital Branding</h2><div id="branding-list"></div></section>
         <section id="tools" class="tab-content hidden"><h2>CPA Study Tools</h2><div id="tools-list"></div></section>
         <section id="engagement" class="tab-content hidden"><h2>Student Organizations</h2><div id="clubs-list"></div></section>
     </main>
