@@ -34,21 +34,22 @@
     ]
   },
   "cpaTools": [
-    { "name": "Becker", "url": "https://www.becker.com/cpa-review" },
-    { "name": "uWorld", "url": "https://accounting.uworld.com/cpa-review/" },
-    { "name": "NINJA CPA", "url": "https://www.ninjacpareview.com/" },
-    { "name": "Gleim", "url": "https://www.gleim.com/cpa-review/" },
-    { "name": "Surgent", "url": "https://www.surgentcpareview.com/" }
+    { "name": "Becker CPA Review", "url": "https://www.becker.com/cpa-review" },
+    { "name": "uWorld CPA Review", "url": "https://accounting.uworld.com/cpa-review/" },
+    { "name": "NINJA CPA Review", "url": "https://www.ninjacpareview.com/" },
+    { "name": "Gleim CPA Review", "url": "https://www.gleim.com/cpa-review/" },
+    { "name": "Surgent CPA Review", "url": "https://www.surgentcpareview.com/" }
   ],
   "branding": [
     { "name": "Handshake", "url": "https://rutgers.joinhandshake.com/" },
     { "name": "LinkedIn", "url": "https://www.linkedin.com/" },
-    { "name": "Rutgers Career Connect", "url": "https://rutgers.firsthand.co/" }
+    { "name": "Rutgers Student Alumni Career Connect", "url": "https://rutgers.firsthand.co/" }
   ],
   "clubs": [
     { "name": "Beta Alpha Psi (BAP)", "url": "https://www.rutgersbap.org/" },
     { "name": "Rutgers Accounting Association (RAA)", "url": "https://raarutgers.weebly.com/" },
-    { "name": "Ascend", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/ascend" },
-    { "name": "Women in Business", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/women-business" }
+    { "name": "Ascend Rutgers", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/ascend" },
+    { "name": "Women in Business", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/women-business" },
+    { "name": "Full RBS Org List", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations" }
   ]
 }
