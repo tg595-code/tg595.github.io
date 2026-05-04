@@ -1,33 +1,27 @@
 {
   "curriculum": {
-    "sasCore": [
-      "Expository Writing (01:355:101)",
-      "21st Century Challenges (2 courses)",
-      "Natural Sciences (2 courses)",
-      "Social & Historical Analysis (2 courses)",
-      "Arts & Humanities (2 courses)"
-    ],
+    "sasCore": ["Expository Writing (01:355:101)", "21st Century Challenges", "Natural Sciences", "Social & Historical Analysis", "Arts & Humanities"],
     "foundationalCore": [
       "01:198:170 Computer Applications for Business (3)",
-      "01:220:102 Introduction to Microeconomics (3)",
-      "01:220:103 Introduction to Macroeconomics (3)",
+      "01:220:102 Intro to Microeconomics (3)",
+      "01:220:103 Intro to Macroeconomics (3)",
       "01:640:135 Calculus I (4)",
-      "01:960:285 Introductory Statistics for Business (3)"
+      "01:960:285 Intro Stats for Business (3)"
     ],
     "businessCore": [
-      "33:010:272 Introduction to Financial Accounting (3)",
-      "33:010:275 Introduction to Managerial Accounting (3)",
-      "33:011:301/302/303 Career Journey Series (3)",
-      "33:140:320 Business Law I (3) OR 33:522:334 Ethics",
-      "33:390:300 Financial Management (3)",
-      "33:620:301 Introduction to Management (3)",
-      "33:620:302 Management Skills (3)",
-      "33:136:370 Management Information Systems (3)",
-      "33:136:385 Statistical Methods in Business (3)",
-      "33:136:386 Operations Management (3)",
-      "33:630:301 Introduction to Marketing (3)",
-      "33:799:301 Introduction to Supply Chain Management (3)",
-      "33:620:492 Business Policy and Strategy (3)"
+      "33:010:272 Intro to Financial Accounting",
+      "33:010:275 Intro to Managerial Accounting",
+      "33:011:301/302/303 Career Journey Series",
+      "33:140:320 Business Law I",
+      "33:390:300 Financial Management",
+      "33:620:301 Intro to Management",
+      "33:620:302 Management Skills",
+      "33:136:370 Management Info Systems",
+      "33:136:385 Statistical Methods",
+      "33:136:386 Operations Management",
+      "33:630:301 Intro to Marketing",
+      "33:799:301 Intro to Supply Chain",
+      "33:620:492 Business Policy & Strategy"
     ],
     "accountingMajor": [
       "33:010:325 Intermediate Accounting I",
@@ -40,17 +34,21 @@
     ]
   },
   "cpaTools": [
-    { "name": "Becker", "desc": "Industry standard. Most firms sponsor this for interns." },
-    { "name": "uWorld", "desc": "Features videos by Rutgers favorite Peter Olinto." },
-    { "name": "Technical Skills", "desc": "SAP, Coupa, & Smart Fix Verifier (Treasury/AP)." }
+    { "name": "Becker", "url": "https://www.becker.com/cpa-review" },
+    { "name": "uWorld", "url": "https://accounting.uworld.com/cpa-review/" },
+    { "name": "NINJA CPA", "url": "https://www.ninjacpareview.com/" },
+    { "name": "Gleim", "url": "https://www.gleim.com/cpa-review/" },
+    { "name": "Surgent", "url": "https://www.surgentcpareview.com/" }
   ],
   "branding": [
-    { "platform": "Handshake", "advice": "Use to apply for Knack Tutoring and SLPs." },
-    { "platform": "LinkedIn", "advice": "Highlight your 3.7 GPA and RPA/Automation skills." }
+    { "name": "Handshake", "url": "https://rutgers.joinhandshake.com/" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/" },
+    { "name": "Rutgers Career Connect", "url": "https://rutgers.firsthand.co/" }
   ],
   "clubs": [
-    { "name": "Beta Alpha Psi", "desc": "Premier honor society for Accounting." },
-    { "name": "Knack Tutoring", "desc": "Active Tutor for Financial & Managerial Accounting." },
-    { "name": "Rutgers Accounting Association", "desc": "Professional networking and firm events." }
+    { "name": "Beta Alpha Psi (BAP)", "url": "https://www.rutgersbap.org/" },
+    { "name": "Rutgers Accounting Association (RAA)", "url": "https://raarutgers.weebly.com/" },
+    { "name": "Ascend", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/ascend" },
+    { "name": "Women in Business", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/women-business" }
   ]
 }
