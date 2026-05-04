@@ -5,7 +5,7 @@ async function init() {
         const response = await fetch('./questions.json');
         appData = await response.json();
         renderResources();
-    } catch (e) { console.error("Data load error", e); }
+    } catch (e) { console.error("Initialization Error:", e); }
 }
 
 function nextStep(step) {
@@ -22,9 +22,9 @@ function generateRoadmap() {
     container.innerHTML = "";
 
     if (year === "freshman" || year === "sophomore") {
-        renderChecklist("Foundational Core", appData.curriculum.foundationalCore);
+        renderChecklist("Foundational Core Requirements", appData.curriculum.foundationalCore);
     }
-    renderChecklist("Business Core", appData.curriculum.businessCore);
+    renderChecklist("Business Core Requirements", appData.curriculum.businessCore);
     renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
     if (year === "junior" || year === "senior") {
         renderChecklist("Accounting Major Requirements", appData.curriculum.accountingMajor);
@@ -41,18 +41,31 @@ function renderChecklist(title, items) {
     document.getElementById('checklist-area').appendChild(box);
 }
 
-function downloadRemaining() {
+function printChecklist() {
     const checks = document.querySelectorAll('.course-check');
-    let listText = "MY REMAINING CLASSES:\n\n";
+    let remaining = "";
     checks.forEach(c => {
-        if (!c.checked) listText += `- ${c.getAttribute('data-name')}\n`;
+        if (!c.checked) {
+            remaining += `<li>${c.getAttribute('data-name')}</li>`;
+        }
     });
 
-    const blob = new Blob([listText], { type: "text/plain" });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = "Remaining_Classes.txt";
-    link.click();
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html><head><title>My Remaining Requirements</title>
+        <style>
+            body { font-family: sans-serif; padding: 40px; }
+            h1 { color: #cc0033; border-bottom: 2px solid #cc0033; }
+            li { margin: 10px 0; font-size: 1.1rem; }
+        </style></head>
+        <body>
+            <h1>Remaining Accounting Requirements</h1>
+            <p>Target Graduation: ${document.getElementById('grad-date').value}</p>
+            <ul>${remaining || "<li>All requirements completed!</li>"}</ul>
+        </body></html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
 }
 
 function renderResources() {
