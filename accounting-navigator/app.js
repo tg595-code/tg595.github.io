@@ -2,13 +2,13 @@ let appData = null;
 
 async function init() {
     try {
-        // Adding a timestamp to the URL forces the browser to fetch the freshest JSON
+        // Cache-busting URL to ensure fresh data
         const response = await fetch('./questions.json?v=' + Date.now());
-        if (!response.ok) throw new Error("JSON fail");
+        if (!response.ok) throw new Error("Data fetch failed");
         appData = await response.json();
         renderResources();
     } catch (e) {
-        console.error("Initialization Error:", e);
+        console.error("App Init Error:", e);
     }
 }
 
@@ -17,24 +17,22 @@ function nextStep(step) {
     document.getElementById(`step${step + 1}`).classList.remove('hidden');
 }
 
-// Renamed and updated logic to ensure strict ordering
-function runNavigatorV2() {
+function runNavigatorV3() {
     const year = document.getElementById('user-year').value;
     document.getElementById('survey-container').classList.add('hidden');
     document.getElementById('personalized-results').classList.remove('hidden');
     
     const container = document.getElementById('checklist-area');
-    container.innerHTML = "";
+    container.innerHTML = ""; // Clear existing lists
 
-    console.log("Generating roadmap for:", year); // For debugging
-
+    // STRICTOR ORDERING LOGIC
     if (year === "freshman" || year === "sophomore") {
-        // ORDER: SAS -> Foundational -> Business Core
+        // Order: SAS -> Foundational -> Business Core
         renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
         renderChecklist("RBS Foundational Core", appData.curriculum.foundationalCore);
         renderChecklist("RBS Business Core Requirements", appData.curriculum.businessCore);
     } else {
-        // JUNIOR OR SENIOR ORDER: SAS -> Business Core -> Accounting Major
+        // Order: SAS -> Business Core -> Accounting Major
         renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
         renderChecklist("RBS Business Core Requirements", appData.curriculum.businessCore);
         renderChecklist("Accounting Major Requirements", appData.curriculum.accountingMajor);
@@ -46,7 +44,11 @@ function renderChecklist(title, items) {
     box.className = "result-box";
     box.innerHTML = `<h3>${title}</h3>`;
     items.forEach(item => {
-        box.innerHTML += `<div class="check-item"><input type="checkbox" class="course-check" data-name="${item}"> <span>${item}</span></div>`;
+        box.innerHTML += `
+            <div class="check-item">
+                <input type="checkbox" class="course-check" data-name="${item}"> 
+                <span>${item}</span>
+            </div>`;
     });
     document.getElementById('checklist-area').appendChild(box);
 }
@@ -65,16 +67,16 @@ function generatePDF() {
 
     const printWindow = window.open('', '_blank');
     printWindow.document.write(`
-        <html><head><title>Remaining Classes</title>
+        <html><head><title>My Remaining Requirements</title>
         <style>
-            body { font-family: 'Segoe UI', sans-serif; padding: 40px; }
+            body { font-family: sans-serif; padding: 40px; line-height: 1.6; }
             h1 { color: #cc0033; border-bottom: 2px solid #cc0033; }
-            li { margin: 10px 0; font-size: 1.1rem; }
+            li { margin: 8px 0; font-size: 1.1rem; }
         </style></head>
         <body>
-            <h1>Classes Needed for Completion</h1>
+            <h1>Classes I Still Need to Take</h1>
             <p>Target Graduation: ${document.getElementById('grad-date').value}</p>
-            <ul>${count > 0 ? remainingHTML : "<li>All classes marked as complete!</li>"}</ul>
+            <ul>${count > 0 ? remainingHTML : "<li>All classes complete!</li>"}</ul>
         </body></html>
     `);
     printWindow.document.close();
