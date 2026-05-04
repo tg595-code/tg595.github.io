@@ -1,58 +1,70 @@
 let appData = null;
 
 async function init() {
-    const res = await fetch('./questions.json');
-    appData = await res.json();
-    renderResources();
+    try {
+        const response = await fetch('./questions.json');
+        if (!response.ok) throw new Error("Data fetch failed");
+        appData = await response.json();
+        renderStaticTabs();
+    } catch (error) {
+        console.error("Initialization error:", error);
+    }
 }
 
-function nextStep(step) {
-    document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
-    document.getElementById(`step${step}`).classList.remove('hidden');
+function nextStep(currentStep) {
+    document.getElementById(`step${currentStep}`).classList.add('hidden');
+    document.getElementById(`step${currentStep + 1}`).classList.remove('hidden');
 }
 
 function generateRoadmap() {
     const year = document.getElementById('user-year').value;
     const grad = document.getElementById('grad-date').value;
-    
+    const path = document.getElementById('cpa-path').value;
+
     document.getElementById('survey-container').classList.add('hidden');
     document.getElementById('personalized-results').classList.remove('hidden');
-    document.getElementById('display-grad').innerText = `Target Graduation: ${grad}`;
+    
+    document.getElementById('display-summary').innerHTML = 
+        `<strong>Plan:</strong> ${path} | <strong>Target Grad:</strong> ${grad}`;
 
-    const container = document.getElementById('checklist-area');
-    container.innerHTML = "";
+    const checklistContainer = document.getElementById('checklist-area');
+    checklistContainer.innerHTML = "";
 
-    // LOGIC: Filter based on status
-    if (year === 'freshman' || year === 'sophomore') {
-        addCategory(container, "Foundational Core", appData.curriculum.foundationalCore);
-        addCategory(container, "Business Core", appData.curriculum.businessCore);
-        addCategory(container, "SAS Core Requirements", appData.curriculum.sasCore);
-    } else {
-        addCategory(container, "Business Core", appData.curriculum.businessCore);
-        addCategory(container, "SAS Core Requirements", appData.curriculum.sasCore);
-        addCategory(container, "Accounting Major Requirements", appData.curriculum.accountingMajor);
+    // Logic: Freshmen/Sophomores get Foundational + Business + SAS
+    // Juniors/Seniors get Business + SAS + Major
+    if (year === "freshman" || year === "sophomore") {
+        renderChecklistSection("Foundational Core Requirements", appData.curriculum.foundationalCore);
+    }
+    
+    renderChecklistSection("Business Core Requirements", appData.curriculum.businessCore);
+    renderChecklistSection("SAS Core Requirements", appData.curriculum.sasCore);
+
+    if (year === "junior" || year === "senior") {
+        renderChecklistSection("Accounting Major Requirements", appData.curriculum.accountingMajor);
     }
 }
 
-function addCategory(parent, title, items) {
-    const section = document.createElement('div');
-    section.className = "result-box";
-    section.innerHTML = `<h3>${title}</h3>`;
+function renderChecklistSection(title, items) {
+    const container = document.getElementById('checklist-area');
+    const box = document.createElement('div');
+    box.className = "result-box";
+    box.innerHTML = `<h3>${title}</h3>`;
+    
     items.forEach(item => {
-        section.innerHTML += `
-            <div class="check-item">
-                <input type="checkbox"> <label>${item}</label>
-            </div>`;
+        const div = document.createElement('div');
+        div.className = "check-item";
+        div.innerHTML = `<input type="checkbox"> <span>${item}</span>`;
+        box.appendChild(div);
     });
-    parent.appendChild(section);
+    container.appendChild(box);
 }
 
-function renderResources() {
+function renderStaticTabs() {
     document.getElementById('branding-list').innerHTML = appData.branding.map(b => 
         `<div class="guide-block"><a href="${b.url}" target="_blank">${b.name} ↗</a></div>`).join('');
     
     document.getElementById('tools-list').innerHTML = appData.cpaTools.map(t => 
-        `<div class="tool-card"><a href="${t.url}" target="_blank">${t.name} CPA Review ↗</a></div>`).join('');
+        `<div class="tool-card"><a href="${t.url}" target="_blank">${t.name} ↗</a></div>`).join('');
     
     document.getElementById('clubs-list').innerHTML = appData.clubs.map(c => 
         `<div class="guide-block"><a href="${c.url}" target="_blank">${c.name} ↗</a></div>`).join('');
