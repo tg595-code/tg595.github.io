@@ -3,7 +3,7 @@ let appData = null;
 async function init() {
     try {
         const response = await fetch('./questions.json');
-        if (!response.ok) throw new Error("JSON fail");
+        if (!response.ok) throw new Error("Data Load Failed");
         appData = await response.json();
         renderResources();
     } catch (e) {
@@ -24,13 +24,14 @@ function generateRoadmap() {
     const container = document.getElementById('checklist-area');
     container.innerHTML = "";
 
-    // STRICT CONDITIONAL ORDERING
+    // LOGIC: ENSURE STRICT ORDERING PER USER REQUEST
     if (year === "freshman" || year === "sophomore") {
+        // Order: SAS -> Foundational -> Core
         renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
         renderChecklist("RBS Foundational Core", appData.curriculum.foundationalCore);
         renderChecklist("RBS Core Requirements", appData.curriculum.businessCore);
     } else {
-        // Junior or Senior
+        // Junior or Senior Order: SAS -> Core -> Major
         renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
         renderChecklist("RBS Core Requirements", appData.curriculum.businessCore);
         renderChecklist("Accounting Major Requirements", appData.curriculum.accountingMajor);
@@ -42,7 +43,11 @@ function renderChecklist(title, items) {
     box.className = "result-box";
     box.innerHTML = `<h3>${title}</h3>`;
     items.forEach(item => {
-        box.innerHTML += `<div class="check-item"><input type="checkbox" class="course-check" data-name="${item}"> <span>${item}</span></div>`;
+        box.innerHTML += `
+            <div class="check-item">
+                <input type="checkbox" class="course-check" data-name="${item}"> 
+                <span>${item}</span>
+            </div>`;
     });
     document.getElementById('checklist-area').appendChild(box);
 }
@@ -64,13 +69,13 @@ function generatePDF() {
         <html><head><title>Remaining Requirements</title>
         <style>
             body { font-family: 'Segoe UI', sans-serif; padding: 40px; }
-            h1 { color: #cc0033; border-bottom: 2px solid #cc0033; padding-bottom: 10px; }
+            h1 { color: #cc0033; border-bottom: 2px solid #cc0033; }
             li { margin: 10px 0; font-size: 1.1rem; }
         </style></head>
         <body>
-            <h1>Remaining Accounting Requirements</h1>
+            <h1>My Remaining Accounting Requirements</h1>
             <p>Target Graduation: ${document.getElementById('grad-date').value}</p>
-            <ul>${count > 0 ? remainingHTML : "<li>All coursework completed!</li>"}</ul>
+            <ul>${count > 0 ? remainingHTML : "<li>All classes completed!</li>"}</ul>
         </body></html>
     `);
     printWindow.document.close();
