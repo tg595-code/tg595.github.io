@@ -3,75 +3,73 @@ let appData = null;
 async function init() {
     try {
         const response = await fetch('./questions.json');
-        if (!response.ok) throw new Error("Could not load data");
         appData = await response.json();
-        // Render Branding, Tools, and Clubs immediately on load
         renderResources();
-    } catch (error) {
-        console.error("Error initializing app:", error);
-    }
+    } catch (e) { console.error("Load error", e); }
 }
 
-// Navigates between survey steps
-function nextStep(current) {
-    document.getElementById(`step${current}`).classList.add('hidden');
-    document.getElementById(`step${current + 1}`).classList.remove('hidden');
+function nextStep(step) {
+    document.getElementById(`step${step}`).classList.add('hidden');
+    document.getElementById(`step${step+1}`).classList.remove('hidden');
 }
 
-// Filters classes and builds the interactive checklist
 function generateRoadmap() {
     const year = document.getElementById('user-year').value;
-    const path = document.getElementById('cpa-path').value;
-    const grad = document.getElementById('grad-date').value;
-
     document.getElementById('survey-container').classList.add('hidden');
     document.getElementById('personalized-results').classList.remove('hidden');
     
-    document.getElementById('display-summary').innerHTML = 
-        `<strong>Status:</strong> ${year.toUpperCase()} | <strong>Plan:</strong> ${path} | <strong>Graduation:</strong> ${grad}`;
+    const container = document.getElementById('checklist-area');
+    container.innerHTML = "";
 
-    const checklistContainer = document.getElementById('checklist-area');
-    checklistContainer.innerHTML = ""; // Clear old results
-
-    // LOGIC: Filter based on student year
     if (year === "freshman" || year === "sophomore") {
-        renderSection("Foundational Core", appData.curriculum.foundationalCore);
-        renderSection("Business Core", appData.curriculum.businessCore);
-        renderSection("SAS Core Requirements", appData.curriculum.sasCore);
-    } else {
-        renderSection("Business Core", appData.curriculum.businessCore);
-        renderSection("SAS Core Requirements", appData.curriculum.sasCore);
-        renderSection("Accounting Major Requirements", appData.curriculum.accountingMajor);
+        renderChecklist("Foundational Core", appData.curriculum.foundationalCore);
+    }
+    renderChecklist("Business Core", appData.curriculum.businessCore);
+    renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
+    if (year === "junior" || year === "senior") {
+        renderChecklist("Accounting Major Requirements", appData.curriculum.accountingMajor);
     }
 }
 
-function renderSection(title, items) {
-    const container = document.getElementById('checklist-area');
+function renderChecklist(title, items) {
     const box = document.createElement('div');
     box.className = "result-box";
     box.innerHTML = `<h3>${title}</h3>`;
-    
     items.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = "check-item";
-        itemDiv.innerHTML = `<input type="checkbox"> <span>${item}</span>`;
-        box.appendChild(itemDiv);
+        box.innerHTML += `<div class="check-item"><input type="checkbox" class="course-check" data-name="${item}"> <span>${item}</span></div>`;
     });
-    container.appendChild(box);
+    document.getElementById('checklist-area').appendChild(box);
+}
+
+function downloadRemainingPDF() {
+    const checks = document.querySelectorAll('.course-check');
+    let remaining = "--- REMAINING CLASSES TO COMPLETE ---\n\n";
+    let count = 0;
+
+    checks.forEach(c => {
+        if (!c.checked) {
+            remaining += `- [ ] ${c.getAttribute('data-name')}\n`;
+            count++;
+        }
+    });
+
+    if (count === 0) remaining += "Congratulations! All classes are checked off.";
+
+    const blob = new Blob([remaining], { type: "text/plain" });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = "My_Remaining_Accounting_Classes.txt";
+    link.click();
 }
 
 function renderResources() {
-    // Fill Branding Tab
-    document.getElementById('branding-list').innerHTML = appData.branding.map(b => 
-        `<div class="resource-card"><a href="${b.url}" target="_blank">${b.name} ↗</a></div>`).join('');
-    
-    // Fill Study Tools Tab
-    document.getElementById('tools-list').innerHTML = appData.cpaTools.map(t => 
-        `<div class="resource-card"><a href="${t.url}" target="_blank">${t.name} ↗</a></div>`).join('');
-    
-    // Fill Clubs Tab
-    document.getElementById('clubs-list').innerHTML = appData.clubs.map(c => 
-        `<div class="resource-card"><a href="${c.url}" target="_blank">${c.name} ↗</a></div>`).join('');
+    const mapLinks = (data, id) => {
+        document.getElementById(id).innerHTML = data.map(item => 
+            `<div class="resource-card"><a href="${item.url}" target="_blank">${item.name} ↗</a></div>`).join('');
+    };
+    mapLinks(appData.branding, 'branding-list');
+    mapLinks(appData.cpaTools, 'tools-list');
+    mapLinks(appData.clubs, 'clubs-list');
 }
 
 function showTab(id) {
