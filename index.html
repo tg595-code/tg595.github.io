@@ -11,6 +11,7 @@
             --orange: #FFE0B2; --green: #E8F5E9; --text-dark: #2D3436; --text-light: #636E72;
             --accent-blue: #0984e3; --accent-pink: #f06292; --accent-orange: #E67E22;
             --accent-green: #2E7D32; --accent-purple: #6c5ce7;
+            --rutgers-red: #cc0033;
         }
         body { font-family: 'Inter', sans-serif; background-color: #fcfcfc; color: var(--text-dark); margin: 0; display: flex; justify-content: center; padding: 40px 20px; }
         .portfolio-card { width: 100%; max-width: 950px; background: white; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #f0f0f0; }
@@ -24,12 +25,15 @@
         .contact-info { color: var(--text-light); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; }
         .btn-resume { background-color: var(--yellow); padding: 14px 30px; border-radius: 50px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; transition: 0.3s; display: inline-block; border: 1px solid transparent; }
         .btn-resume:hover { transform: scale(1.05); background-color: white; border-color: var(--yellow); }
+        
         .tabs { display: flex; background: #fff; border-bottom: 1px solid #eee; flex-wrap: wrap; }
-        .tab-btn { flex: 1; padding: 20px 5px; border: none; background: none; cursor: pointer; font-weight: 600; font-family: 'Poppins', sans-serif; color: var(--text-light); transition: 0.3s; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .tab-btn { flex: 1; padding: 20px 5px; border: none; background: none; cursor: pointer; font-weight: 600; font-family: 'Poppins', sans-serif; color: var(--text-light); transition: 0.3s; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; min-width: 120px; }
         .tab-btn.active { color: var(--text-dark); border-bottom: 5px solid var(--yellow); background-color: #fafafa; }
+        
         .content-section { display: none; padding: 50px 40px; animation: slideUpFade 0.6s ease forwards; }
         .content-section.active { display: block; }
         @keyframes slideUpFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
         .exp-item { margin-bottom: 35px; padding-left: 25px; border-left: 4px solid var(--blue); }
         .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 5px; }
         .company { font-weight: 600; color: var(--accent-blue); font-size: 1.15rem; }
@@ -37,6 +41,7 @@
         .job-title { display: block; font-weight: 600; margin-bottom: 10px; font-style: italic; }
         ul { padding-left: 20px; margin: 0; }
         li { margin-bottom: 8px; font-size: 1rem; line-height: 1.6; }
+        
         .pill-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
         .pill { padding: 10px 22px; border-radius: 25px; font-size: 0.85rem; font-weight: 600; }
         .pill.blue { background: var(--blue); color: var(--accent-blue); }
@@ -44,7 +49,13 @@
         .pill.purple { background: var(--purple); color: var(--accent-purple); }
         .pill.orange { background: var(--orange); color: var(--accent-orange); }
         .pill.green { background: var(--green); color: var(--accent-green); }
+        .pill.red { background: #fee2e2; color: var(--rutgers-red); }
+
         h2 { font-family: 'Poppins', sans-serif; border-bottom: 3px solid var(--purple); display: inline-block; padding-bottom: 8px; margin-bottom: 30px; font-size: 1.6rem; }
+
+        /* Project Specific Styles */
+        .project-desc { background: #f9f9f9; padding: 25px; border-radius: 15px; margin-bottom: 30px; line-height: 1.6; border-left: 5px solid var(--rutgers-red); }
+        .iframe-container { border: 2px solid #eee; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -62,52 +73,45 @@
 
     <nav class="tabs">
         <button class="tab-btn active" onclick="openTab(event, 'work')">Experience</button>
-        <button class="tab-btn" onclick="openTab(event, 'edu')">Education</button>
-        <button class="tab-btn" onclick="openTab(event, 'skills')">Technical Skills</button>
-        <button class="tab-btn" onclick="openTab(event, 'langs')">Languages</button>
+        <button class="tab-btn" onclick="openTab(event, 'project')">Passion Project</button> <button class="tab-btn" onclick="openTab(event, 'edu')">Education</button>
+        <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
         <button class="tab-btn" onclick="openTab(event, 'clubs')">Clubs</button>
         <button class="tab-btn" onclick="openTab(event, 'interests')">Interests</button>
     </nav>
 
     <div id="work" class="content-section active">
         <h2>Professional Experience</h2>
-        
         <div class="exp-item">
             <div class="exp-header"><span class="company">Knack Tutor</span><span class="date">Sept 2025 – Present</span></div>
             <span class="job-title">Rutgers Business School</span>
             <ul>
-                <li>Provides targeted tutoring for Financial and Managerial Accounting courses, clarifying GAAP principles and financial reporting.</li>
-                <li>Supports student academic growth through detailed problem-solving sessions and conceptual reviews.</li>
+                <li>Provides targeted tutoring for Financial and Managerial Accounting courses.</li>
+                <li>Supports student academic growth through detailed problem-solving sessions.</li>
             </ul>
         </div>
-
         <div class="exp-item" style="border-color: var(--purple);">
             <div class="exp-header"><span class="company">Munich Re Insurance</span><span class="date">May 2025 – Aug 2025</span></div>
             <span class="job-title">Technical Accounting & Treasury Intern</span>
-            <ul>
-                <li>Utilized Robotic Process Automation (RPA) to streamline treasury operations and reduce manual data entry.</li>
-                <li>Maintained financial accuracy by processing journal entries and auditing ledgers within SAP/FSRI.</li>
-                <li>Leveraged Excel for comprehensive data aggregation to assist with treasury reporting and reconciliation.</li>
-            </ul>
         </div>
+    </div>
 
-        <div class="exp-item" style="border-color: var(--pink);">
-            <div class="exp-header"><span class="company">Munich Re Insurance</span><span class="date">May 2024 – Aug 2024</span></div>
-            <span class="job-title">Accounts Payable & Treasury Intern</span>
-            <ul>
-                <li>Enhanced Accounts Payable efficiency using Smart Fix Verifier AI and Coupa Treasury systems.</li>
-                <li>Validated vendor data and payment records in SAP to ensure accurate and timely disbursements.</li>
-                <li>Worked with cross-functional teams to reconcile invoice variances and manage payment aging.</li>
-            </ul>
+    <div id="project" class="content-section">
+        <h2>Passion Project: Accounting Navigator</h2>
+        <div class="project-desc">
+            <p><strong>Goal:</strong> I built this interactive tool to help Rutgers students navigate their journey to becoming an accountant. It centralizes <strong>Foundational Core</strong>, <strong>Business Core</strong>, and <strong>Accounting Major</strong> requirements.</p>
+            <p>This project serves as a roadmap for students to discover necessary courses, professional clubs like Beta Alpha Psi, and essential CPA study materials (Becker/uWorld).</p>
         </div>
-
-        <div class="exp-item" style="border-color: var(--yellow);">
-            <div class="exp-header"><span class="company">TJ MAXX</span><span class="date">Sept 2023 – April 2024</span></div>
-            <span class="job-title">Associate</span>
-            <ul>
-                <li>Handled high-volume transactions with precision in a fast-paced retail environment.</li>
-                <li>Managed jewelry inventory security and coding to maintain stock accuracy.</li>
-            </ul>
+        
+        <div class="iframe-container">
+            <iframe 
+                src="https://tg595-code.github.io/tg595.github.io/accounting-navigator/" 
+                width="100%" 
+                height="600px" 
+                style="border:none;">
+            </iframe>
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="https://tg595-code.github.io/tg595.github.io/accounting-navigator/" target="_blank" style="color: var(--rutgers-red); font-weight: 600; text-decoration: none;">Open App in Full Screen ↗</a>
         </div>
     </div>
 
@@ -131,16 +135,6 @@
             <span class="pill purple">Coupa Treasury</span>
             <span class="pill purple">RPA Workflow</span>
             <span class="pill purple">Advanced Excel</span>
-            <span class="pill purple">Smart Fix Verifier</span>
-        </div>
-    </div>
-
-    <div id="langs" class="content-section">
-        <h2>Languages</h2>
-        <div class="pill-group">
-            <span class="pill blue">Hindi (Native)</span>
-            <span class="pill blue">Gujarati (Native)</span>
-            <span class="pill blue">Spanish (Conversational)</span>
         </div>
     </div>
 
@@ -167,11 +161,17 @@
     function openTab(evt, tabName) {
         var i, content, tablinks;
         content = document.getElementsByClassName("content-section");
-        for (i = 0; i < content.length; i++) { content[i].style.display = "none"; content[i].classList.remove("active"); }
+        for (i = 0; i < content.length; i++) { 
+            content[i].style.display = "none"; 
+            content[i].classList.remove("active"); 
+        }
         tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
-        document.getElementById(tabName).style.display = "block";
-        setTimeout(() => { document.getElementById(tabName).classList.add("active"); }, 10);
+        for (i = 0; i < tablinks.length; i++) { 
+            tablinks[i].classList.remove("active"); 
+        }
+        const activeTab = document.getElementById(tabName);
+        activeTab.style.display = "block";
+        setTimeout(() => { activeTab.classList.add("active"); }, 10);
         evt.currentTarget.classList.add("active");
     }
 </script>
