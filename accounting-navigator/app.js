@@ -5,12 +5,12 @@ async function init() {
         const response = await fetch('./questions.json');
         appData = await response.json();
         renderResources();
-    } catch (e) { console.error("Load error", e); }
+    } catch (e) { console.error("Data load error", e); }
 }
 
 function nextStep(step) {
     document.getElementById(`step${step}`).classList.add('hidden');
-    document.getElementById(`step${step+1}`).classList.remove('hidden');
+    document.getElementById(`step${step + 1}`).classList.remove('hidden');
 }
 
 function generateRoadmap() {
@@ -41,35 +41,28 @@ function renderChecklist(title, items) {
     document.getElementById('checklist-area').appendChild(box);
 }
 
-function downloadRemainingPDF() {
+function downloadRemaining() {
     const checks = document.querySelectorAll('.course-check');
-    let remaining = "--- REMAINING CLASSES TO COMPLETE ---\n\n";
-    let count = 0;
-
+    let listText = "MY REMAINING CLASSES:\n\n";
     checks.forEach(c => {
-        if (!c.checked) {
-            remaining += `- [ ] ${c.getAttribute('data-name')}\n`;
-            count++;
-        }
+        if (!c.checked) listText += `- ${c.getAttribute('data-name')}\n`;
     });
 
-    if (count === 0) remaining += "Congratulations! All classes are checked off.";
-
-    const blob = new Blob([remaining], { type: "text/plain" });
+    const blob = new Blob([listText], { type: "text/plain" });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = "My_Remaining_Accounting_Classes.txt";
+    link.download = "Remaining_Classes.txt";
     link.click();
 }
 
 function renderResources() {
-    const mapLinks = (data, id) => {
-        document.getElementById(id).innerHTML = data.map(item => 
-            `<div class="resource-card"><a href="${item.url}" target="_blank">${item.name} ↗</a></div>`).join('');
+    const fill = (data, id) => {
+        document.getElementById(id).innerHTML = data.map(i => 
+            `<div class="resource-card"><a href="${i.url}" target="_blank">${i.name} ↗</a></div>`).join('');
     };
-    mapLinks(appData.branding, 'branding-list');
-    mapLinks(appData.cpaTools, 'tools-list');
-    mapLinks(appData.clubs, 'clubs-list');
+    fill(appData.branding, 'branding-list');
+    fill(appData.cpaTools, 'tools-list');
+    fill(appData.clubs, 'clubs-list');
 }
 
 function showTab(id) {
