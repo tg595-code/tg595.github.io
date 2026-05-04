@@ -22,7 +22,7 @@
             <div id="survey-container">
                 <h2>Interactive Academic Advisor</h2>
                 
-                <div class="step" id="step1">
+                <div id="step1">
                     <label>1. What is your current status?</label>
                     <select id="user-year">
                         <option value="freshman">Freshman</option>
@@ -30,44 +30,42 @@
                         <option value="junior">Junior</option>
                         <option value="senior">Senior</option>
                     </select>
+                    <button class="action-btn" onclick="nextStep(1)">Next</button>
+                </div>
+
+                <div id="step2" class="hidden">
+                    <label>2. Choose your CPA pathway:</label>
+                    <select id="cpa-path">
+                        <option>120 credits + 2yrs working plan</option>
+                        <option>150 credits + 1yr working plan</option>
+                    </select>
                     <button class="action-btn" onclick="nextStep(2)">Next</button>
                 </div>
 
-                <div class="step hidden" id="step2">
-                    <label>2. Select your CPA Pathway:</label>
-                    <select id="pathway">
-                        <option>120 Credits + 2 Years Work Experience</option>
-                        <option>150 Credits + 1 Year Work Experience</option>
-                    </select>
-                    <button class="action-btn" onclick="nextStep(3)">Next</button>
-                </div>
-
-                <div class="step hidden" id="step3">
-                    <label>3. Target Graduation Date:</label>
-                    <input type="text" id="grad-date" placeholder="MM/YYYY">
+                <div id="step3" class="hidden">
+                    <label>3. What is your target Graduation date?</label>
+                    <input type="text" id="grad-date" placeholder="e.g. May 2027">
                     <button class="action-btn" onclick="generateRoadmap()">Generate My Checklist</button>
                 </div>
             </div>
 
             <div id="personalized-results" class="hidden">
-                <div class="profile-header">
-                    <p id="display-grad"></p>
-                    <div class="upload-section">
-                        <label>Upload Degree Navigator PDF:</label>
-                        <input type="file" id="pdf-upload" accept="application/pdf">
+                <div class="meta-info">
+                    <p id="display-summary"></p>
+                    <div class="upload-box">
+                        <label>Upload completion PDF (Optional):</label>
+                        <input type="file" accept="application/pdf">
                     </div>
                 </div>
-                
                 <div id="checklist-area"></div>
-                <button class="secondary-btn" onclick="location.reload()">Reset Advisor</button>
+                <button class="secondary-btn" onclick="location.reload()">Start Over</button>
             </div>
         </section>
 
-        <section id="branding" class="tab-content hidden"><h2>Digital Branding</h2><div id="branding-list"></div></section>
-        <section id="tools" class="tab-content hidden"><h2>CPA Study Materials</h2><div id="tools-list"></div></section>
+        <section id="branding" class="tab-content hidden"><h2>Branding Methods</h2><div id="branding-list"></div></section>
+        <section id="tools" class="tab-content hidden"><h2>CPA Study Tools</h2><div id="tools-list"></div></section>
         <section id="engagement" class="tab-content hidden"><h2>Student Organizations</h2><div id="clubs-list"></div></section>
     </main>
-
     <script src="app.js"></script>
 </body>
 </html>
