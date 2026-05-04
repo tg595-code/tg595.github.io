@@ -38,9 +38,7 @@
     { "name": "uWorld CPA Review", "url": "https://accounting.uworld.com/cpa-review/" },
     { "name": "NINJA CPA Review", "url": "https://www.ninjacpareview.com/" },
     { "name": "Gleim CPA Review", "url": "https://www.gleim.com/cpa-review/" },
-    { "name": "Surgent CPA Review", "url": "https://www.surgent.com/exam-review/cpa-exam-review/cpa-shop-products/?gad_source=1&gad_campaignid=22151628899&gbraid=0AAAAAD_cZJ5AsUaFZsXpp4g6on2LhmZ6y&gclid=Cj0KCQjwh-HPBhCIARIsAC0p3cfhEjRjSAO-_HwfouEkC1U5CGSvUrdJcG-rSBne1xedKHjvZi0y5EwaAi6jEALw_wcB
-
-" }
+    { "name": "Surgent CPA Review", "url": "https://www.surgent.com/exam-review/cpa-exam-review/cpa-shop-products/?gad_source=1&gad_campaignid=22151628899&gbraid=0AAAAAD_cZJ5AsUaFZsXpp4g6on2LhmZ6y&gclid=Cj0KCQjwh-HPBhCIARIsAC0p3cfhEjRjSAO-_HwfouEkC1U5CGSvUrdJcG-rSBne1xedKHjvZi0y5EwaAi6jEALw_wcB" }
   ],
   "branding": [
     { "name": "Handshake", "url": "https://rutgers.joinhandshake.com/" },
@@ -50,7 +48,7 @@
   "clubs": [
     { "name": "Beta Alpha Psi (BAP)", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/beta-alpha-psi" },
     { "name": "Rutgers Accounting Association (RUAA)", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/accounting-association" },
-    { "name": "Women In Business", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/accounting-association" },
-    { "name": "Ascend Rutgers", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/women-in-business" }
+    { "name": "Women In Business", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/women-in-business" },
+    { "name": "Ascend Rutgers", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/ascend" }
   ]
 }
