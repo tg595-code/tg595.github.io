@@ -1,43 +1,61 @@
 let appData = null;
 
 async function init() {
-    try {
-        const response = await fetch('./questions.json');
-        if (!response.ok) throw new Error("Data fetch failed");
-        appData = await response.json();
-        renderStaticTabs();
-    } catch (error) {
-        console.error(error);
-    }
+    const res = await fetch('./questions.json');
+    appData = await res.json();
+    renderResources();
 }
 
-function renderStaticTabs() {
-    document.getElementById('branding-guide').innerHTML = appData.branding.map(i => 
-        `<div class="guide-block"><strong>${i.platform}</strong><p>${i.advice}</p></div>`).join('');
-    
-    document.getElementById('prep-tools-list').innerHTML = appData.cpaTools.map(t => 
-        `<div class="tool-card"><h4>${t.name}</h4><p>${t.desc}</p></div>`).join('');
-    
-    document.getElementById('clubs-list').innerHTML = appData.clubs.map(c => 
-        `<div class="guide-block"><strong>${c.name}</strong><p>${c.desc}</p></div>`).join('');
+function nextStep(step) {
+    document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
+    document.getElementById(`step${step}`).classList.remove('hidden');
 }
 
 function generateRoadmap() {
-    if (!appData) return;
+    const year = document.getElementById('user-year').value;
+    const grad = document.getElementById('grad-date').value;
+    
     document.getElementById('survey-container').classList.add('hidden');
     document.getElementById('personalized-results').classList.remove('hidden');
+    document.getElementById('display-grad').innerText = `Target Graduation: ${grad}`;
 
-    const foundationalHTML = appData.curriculum.foundationalCore.map(c => `<li><strong>[Foundational]</strong> ${c}</li>`).join('');
-    const coreHTML = appData.curriculum.businessCore.map(c => `<li><strong>[Core]</strong> ${c}</li>`).join('');
+    const container = document.getElementById('checklist-area');
+    container.innerHTML = "";
 
-    document.getElementById('sas-list').innerHTML = appData.curriculum.sasCore.map(c => `<li>${c}</li>`).join('');
-    document.getElementById('rbs-list').innerHTML = foundationalHTML + coreHTML;
-    document.getElementById('acc-list').innerHTML = appData.curriculum.accountingMajor.map(c => `<li>${c}</li>`).join('');
+    // LOGIC: Filter based on status
+    if (year === 'freshman' || year === 'sophomore') {
+        addCategory(container, "Foundational Core", appData.curriculum.foundationalCore);
+        addCategory(container, "Business Core", appData.curriculum.businessCore);
+        addCategory(container, "SAS Core Requirements", appData.curriculum.sasCore);
+    } else {
+        addCategory(container, "Business Core", appData.curriculum.businessCore);
+        addCategory(container, "SAS Core Requirements", appData.curriculum.sasCore);
+        addCategory(container, "Accounting Major Requirements", appData.curriculum.accountingMajor);
+    }
 }
 
-function resetSurvey() {
-    document.getElementById('survey-container').classList.remove('hidden');
-    document.getElementById('personalized-results').classList.add('hidden');
+function addCategory(parent, title, items) {
+    const section = document.createElement('div');
+    section.className = "result-box";
+    section.innerHTML = `<h3>${title}</h3>`;
+    items.forEach(item => {
+        section.innerHTML += `
+            <div class="check-item">
+                <input type="checkbox"> <label>${item}</label>
+            </div>`;
+    });
+    parent.appendChild(section);
+}
+
+function renderResources() {
+    document.getElementById('branding-list').innerHTML = appData.branding.map(b => 
+        `<div class="guide-block"><a href="${b.url}" target="_blank">${b.name} ↗</a></div>`).join('');
+    
+    document.getElementById('tools-list').innerHTML = appData.cpaTools.map(t => 
+        `<div class="tool-card"><a href="${t.url}" target="_blank">${t.name} CPA Review ↗</a></div>`).join('');
+    
+    document.getElementById('clubs-list').innerHTML = appData.clubs.map(c => 
+        `<div class="guide-block"><a href="${c.url}" target="_blank">${c.name} ↗</a></div>`).join('');
 }
 
 function showTab(id) {
