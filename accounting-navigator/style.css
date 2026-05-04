@@ -1,19 +1,15 @@
-:root { --ru-red: #cc0033; --dark: #222; --white: #fff; }
-body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; margin: 0; }
-header { background: var(--ru-red); color: white; padding: 20px; text-align: center; }
-nav button { padding: 8px 15px; border-radius: 20px; border: none; cursor: pointer; margin: 5px; font-weight: bold; }
-#app-container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 12px; }
+:root { --ru-red: #cc0033; --dark: #222; }
+body { font-family: 'Segoe UI', sans-serif; background: #f9f9f9; margin: 0; padding-bottom: 50px; }
+header { background: var(--ru-red); color: white; padding: 25px; text-align: center; }
+nav { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+nav button { padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; font-weight: bold; }
 
-.step { animation: fadeIn 0.5s; }
+#app-container { max-width: 800px; margin: 30px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
 .hidden { display: none; }
-.check-item { margin: 10px 0; display: flex; align-items: center; gap: 10px; }
+.action-btn { background: var(--ru-red); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; }
 .result-box { border-left: 5px solid var(--ru-red); background: #fffafa; padding: 15px; margin-bottom: 20px; }
-
-.action-btn { background: var(--ru-red); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; margin-top: 15px; width: 100%; }
-.secondary-btn { background: #eee; border: 1px solid #ccc; padding: 10px; cursor: pointer; margin-top: 20px; }
-
-.upload-section { background: #f0f0f0; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px dashed #999; }
+.check-item { margin: 10px 0; display: flex; align-items: center; gap: 10px; }
+.meta-info { background: #f0f0f0; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+.guide-block, .tool-card { padding: 15px; border-bottom: 1px solid #eee; }
 a { color: var(--ru-red); text-decoration: none; font-weight: bold; }
 a:hover { text-decoration: underline; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
