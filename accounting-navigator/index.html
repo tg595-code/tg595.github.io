@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rutgers Accounting Navigator</title>
+    <title>Accounting Navigator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,34 +21,39 @@
             <div id="survey-container">
                 <div id="step1">
                     <p>1. Current Status:</p>
-                    <select id="user-year"><option value="freshman">Freshman</option><option value="sophomore">Sophomore</option><option value="junior">Junior</option><option value="senior">Senior</option></select>
+                    <select id="user-year">
+                        <option value="freshman">Freshman</option>
+                        <option value="sophomore">Sophomore</option>
+                        <option value="junior">Junior</option>
+                        <option value="senior">Senior</option>
+                    </select>
                     <button class="action-btn" onclick="nextStep(1)">Next</button>
                 </div>
                 <div id="step2" class="hidden">
-                    <p>2. CPA Pathway:</p>
+                    <p>2. Choose Pathway:</p>
                     <select id="path"><option>120 Credits</option><option>150 Credits</option></select>
                     <button class="action-btn" onclick="nextStep(2)">Next</button>
                 </div>
                 <div id="step3" class="hidden">
                     <p>3. Target Graduation Date:</p>
                     <input type="text" id="grad-date" placeholder="May 2027">
-                    <button class="action-btn" onclick="generateRoadmap()">Show My Plan</button>
+                    <button class="action-btn" onclick="runNavigatorV2()">Show My Plan</button>
                 </div>
             </div>
 
             <div id="personalized-results" class="hidden">
                 <div class="summary-card">
-                    <p>Check mark the classes you have completed. Click <strong>Submit</strong> to download the remaining list as a PDF.</p>
+                    <p>Check mark what you have completed. Click <strong>Submit</strong> to download the remaining list as a PDF.</p>
                     <button class="action-btn" style="background:#2ecc71;" onclick="generatePDF()">Submit & Download PDF</button>
                 </div>
                 <div id="checklist-area"></div>
-                <button class="action-btn" style="background:#666;" onclick="location.reload()">Reset</button>
+                <button class="action-btn" style="background:#666;" onclick="location.reload()">Start Over</button>
             </div>
         </section>
 
-        <section id="branding" class="tab-content hidden"><div id="branding-list"></div></section>
-        <section id="tools" class="tab-content hidden"><div id="tools-list"></div></section>
-        <section id="engagement" class="tab-content hidden"><div id="clubs-list"></div></section>
+        <section id="branding" class="tab-content hidden"><h2>Digital Branding</h2><div id="branding-list"></div></section>
+        <section id="tools" class="tab-content hidden"><h2>CPA Tools</h2><div id="tools-list"></div></section>
+        <section id="engagement" class="tab-content hidden"><h2>Engagement</h2><div id="clubs-list"></div></section>
     </main>
     <script src="app.js"></script>
 </body>
