@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rutgers Accounting Navigator</title>
+    <title>Accounting Navigator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,29 +19,32 @@
     <main id="app-container">
         <section id="plan" class="tab-content">
             <div id="survey-container">
-                <h2>Interactive Academic Advisor</h2>
                 <div id="step1">
                     <p>1. What is your current status?</p>
-                    <select id="user-year"><option value="freshman">Freshman</option><option value="sophomore">Sophomore</option><option value="junior">Junior</option><option value="senior">Senior</option></select>
+                    <select id="user-year">
+                        <option value="freshman">Freshman</option>
+                        <option value="sophomore">Sophomore</option>
+                        <option value="junior">Junior</option>
+                        <option value="senior">Senior</option>
+                    </select>
                     <button class="action-btn" onclick="nextStep(1)">Next</button>
                 </div>
                 <div id="step2" class="hidden">
                     <p>2. Choose your pathway:</p>
-                    <select id="cpa-path"><option>120 credits + 2yrs working</option><option>150 credits + 1yr working</option></select>
+                    <select id="path"><option>120 Credits</option><option>150 Credits</option></select>
                     <button class="action-btn" onclick="nextStep(2)">Next</button>
                 </div>
                 <div id="step3" class="hidden">
                     <p>3. Target Graduation Date:</p>
-                    <input type="text" id="grad-date" placeholder="May 2027">
-                    <button class="action-btn" onclick="generateRoadmap()">Generate My Plan</button>
+                    <input type="text" id="grad-date" placeholder="MM/YYYY">
+                    <button class="action-btn" onclick="generateRoadmap()">Show My Plan</button>
                 </div>
             </div>
 
             <div id="personalized-results" class="hidden">
                 <div class="summary-card">
-                    <h3>Your Custom Checklist</h3>
-                    <p>Check off the classes you have already passed, then click the button below to save your remaining schedule.</p>
-                    <button class="action-btn" style="background:#2ecc71;" onclick="downloadRemainingPDF()">💾 Download Remaining Classes (.txt)</button>
+                    <p>Check off what you have finished, then save your remaining list:</p>
+                    <button class="action-btn" style="background:#2ecc71;" onclick="downloadRemaining()">💾 Download Remaining Classes (.txt)</button>
                 </div>
                 <div id="checklist-area"></div>
                 <button class="action-btn" style="background:#666;" onclick="location.reload()">Start Over</button>
