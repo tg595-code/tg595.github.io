@@ -24,7 +24,7 @@ function generateRoadmap() {
     const container = document.getElementById('checklist-area');
     container.innerHTML = "";
 
-    // Conditional Ordering Logic
+    // STRICT CONDITIONAL ORDERING
     if (year === "freshman" || year === "sophomore") {
         renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
         renderChecklist("RBS Foundational Core", appData.curriculum.foundationalCore);
@@ -61,16 +61,16 @@ function generatePDF() {
 
     const printWindow = window.open('', '_blank');
     printWindow.document.write(`
-        <html><head><title>Remaining Classes</title>
+        <html><head><title>Remaining Requirements</title>
         <style>
             body { font-family: 'Segoe UI', sans-serif; padding: 40px; }
-            h1 { color: #cc0033; border-bottom: 2px solid #cc0033; }
+            h1 { color: #cc0033; border-bottom: 2px solid #cc0033; padding-bottom: 10px; }
             li { margin: 10px 0; font-size: 1.1rem; }
         </style></head>
         <body>
-            <h1>My Remaining Accounting Coursework</h1>
+            <h1>Remaining Accounting Requirements</h1>
             <p>Target Graduation: ${document.getElementById('grad-date').value}</p>
-            <ul>${count > 0 ? remainingHTML : "<li>All courses completed! Great job.</li>"}</ul>
+            <ul>${count > 0 ? remainingHTML : "<li>All coursework completed!</li>"}</ul>
         </body></html>
     `);
     printWindow.document.close();
