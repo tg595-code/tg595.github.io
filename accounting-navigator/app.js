@@ -24,12 +24,15 @@ function generateRoadmap() {
     const container = document.getElementById('checklist-area');
     container.innerHTML = "";
 
+    // Conditional Ordering Logic
     if (year === "freshman" || year === "sophomore") {
-        renderChecklist("Foundational Core", appData.curriculum.foundationalCore);
-    }
-    renderChecklist("Business Core", appData.curriculum.businessCore);
-    renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
-    if (year === "junior" || year === "senior") {
+        renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
+        renderChecklist("RBS Foundational Core", appData.curriculum.foundationalCore);
+        renderChecklist("RBS Core Requirements", appData.curriculum.businessCore);
+    } else {
+        // Junior or Senior
+        renderChecklist("SAS Core Requirements", appData.curriculum.sasCore);
+        renderChecklist("RBS Core Requirements", appData.curriculum.businessCore);
         renderChecklist("Accounting Major Requirements", appData.curriculum.accountingMajor);
     }
 }
@@ -58,17 +61,16 @@ function generatePDF() {
 
     const printWindow = window.open('', '_blank');
     printWindow.document.write(`
-        <html><head><title>Remaining Requirements</title>
+        <html><head><title>Remaining Classes</title>
         <style>
             body { font-family: 'Segoe UI', sans-serif; padding: 40px; }
             h1 { color: #cc0033; border-bottom: 2px solid #cc0033; }
             li { margin: 10px 0; font-size: 1.1rem; }
-            .meta { color: #555; font-style: italic; margin-bottom: 20px; }
         </style></head>
         <body>
-            <h1>My Remaining Accounting Requirements</h1>
-            <p class="meta">Target Graduation: ${document.getElementById('grad-date').value}</p>
-            <ul>${count > 0 ? remainingHTML : "<li>All courses completed!</li>"}</ul>
+            <h1>My Remaining Accounting Coursework</h1>
+            <p>Target Graduation: ${document.getElementById('grad-date').value}</p>
+            <ul>${count > 0 ? remainingHTML : "<li>All courses completed! Great job.</li>"}</ul>
         </body></html>
     `);
     printWindow.document.close();
