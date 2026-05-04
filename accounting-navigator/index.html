@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rutgers Accounting Navigator</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,63 +20,38 @@
         <section id="plan" class="tab-content">
             <div id="survey-container">
                 <h2>Interactive Academic Advisor</h2>
-                
                 <div id="step1">
                     <p>1. What is your current status?</p>
-                    <select id="user-year">
-                        <option value="freshman">Freshman</option>
-                        <option value="sophomore">Sophomore</option>
-                        <option value="junior">Junior</option>
-                        <option value="senior">Senior</option>
-                    </select>
+                    <select id="user-year"><option value="freshman">Freshman</option><option value="sophomore">Sophomore</option><option value="junior">Junior</option><option value="senior">Senior</option></select>
                     <button class="action-btn" onclick="nextStep(1)">Next</button>
                 </div>
-
                 <div id="step2" class="hidden">
-                    <p>2. Which CPA pathway will you follow?</p>
-                    <select id="cpa-path">
-                        <option>120 credits + 2 years work experience</option>
-                        <option>150 credits + 1 year work experience</option>
-                    </select>
+                    <p>2. Choose your pathway:</p>
+                    <select id="cpa-path"><option>120 credits + 2yrs working</option><option>150 credits + 1yr working</option></select>
                     <button class="action-btn" onclick="nextStep(2)">Next</button>
                 </div>
-
                 <div id="step3" class="hidden">
-                    <p>3. What is your target Graduation date?</p>
-                    <input type="text" id="grad-date" placeholder="e.g. May 2027">
+                    <p>3. Target Graduation Date:</p>
+                    <input type="text" id="grad-date" placeholder="May 2027">
                     <button class="action-btn" onclick="generateRoadmap()">Generate My Plan</button>
                 </div>
             </div>
 
             <div id="personalized-results" class="hidden">
                 <div class="summary-card">
-                    <p id="display-summary"></p>
-                    <div class="pdf-upload">
-                        <label><strong>Optional:</strong> Upload Degree Navigator PDF</label><br>
-                        <input type="file" accept="application/pdf">
-                    </div>
+                    <h3>Your Custom Checklist</h3>
+                    <p>Check off the classes you have already passed, then click the button below to save your remaining schedule.</p>
+                    <button class="action-btn" style="background:#2ecc71;" onclick="downloadRemainingPDF()">💾 Download Remaining Classes (.txt)</button>
                 </div>
                 <div id="checklist-area"></div>
-                <button class="action-btn" style="background:#666;" onclick="location.reload()">Reset Advisor</button>
+                <button class="action-btn" style="background:#666;" onclick="location.reload()">Start Over</button>
             </div>
         </section>
 
-        <section id="branding" class="tab-content hidden">
-            <h2>Digital Branding Strategies</h2>
-            <div id="branding-list"></div>
-        </section>
-
-        <section id="tools" class="tab-content hidden">
-            <h2>CPA Study Tools</h2>
-            <div id="tools-list"></div>
-        </section>
-
-        <section id="engagement" class="tab-content hidden">
-            <h2>Student Organizations</h2>
-            <div id="clubs-list"></div>
-        </section>
+        <section id="branding" class="tab-content hidden"><h2>Digital Branding</h2><div id="branding-list"></div></section>
+        <section id="tools" class="tab-content hidden"><h2>CPA Study Tools</h2><div id="tools-list"></div></section>
+        <section id="engagement" class="tab-content hidden"><h2>Student Organizations</h2><div id="clubs-list"></div></section>
     </main>
-
     <script src="app.js"></script>
 </body>
 </html>
