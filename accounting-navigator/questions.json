@@ -38,19 +38,18 @@
     { "name": "uWorld CPA Review", "url": "https://accounting.uworld.com/cpa-review/" },
     { "name": "NINJA CPA Review", "url": "https://www.ninjacpareview.com/" },
     { "name": "Gleim CPA Review", "url": "https://www.gleim.com/cpa-review/" },
-    { "name": "Surgent CPA Review", "url": "https://www.surgentcpareview.com/" }
+    { "name": "Surgent CPA Review", "url": "https://www.surgent.com/exam-review/cpa-exam-review/cpa-shop-products/?gad_source=1" }
   ],
   "branding": [
     { "name": "Handshake", "url": "https://rutgers.joinhandshake.com/" },
     { "name": "LinkedIn", "url": "https://www.linkedin.com/" },
-    { "name": "Rutgers Student Alumni Career Connect", "url": "https://rutgers.firsthand.co/" }
+    { "name": "Rutgers Student Alumni Career Connect", "url": "https://careerconnect.rutgers.edu/v2/" }
   ],
   "clubs": [
-    { "name": "Beta Alpha Psi (BAP)", "url": "https://www.rutgersbap.org/" },
-    { "name": "Rutgers Accounting Association (RAA)", "url": "https://raarutgers.weebly.com/" },
+    { "name": "Beta Alpha Psi (BAP)", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/beta-alpha-psi" },
+    { "name": "Rutgers Accounting Association (RUAA)", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/accounting-association" },
+    { "name": "Women In Business", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/women-in-business" },
     { "name": "Ascend Rutgers", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/ascend" },
-    { "name": "Women in Business", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/women-business" },
-    { "name": "Association of Latino Professionals For America (ALPFA)", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations/alpfa" },
-    { "name": "Full RBS Student Org Website", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations" }
+    { "name": "Full Student Org List", "url": "https://myrbs.business.rutgers.edu/undergraduate-new-brunswick/student-organizations" }
   ]
 }
