@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Accounting Navigator</title>
+    <title>Rutgers Accounting Navigator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,7 +31,7 @@
                 </div>
                 <div id="step2" class="hidden">
                     <p>2. Choose your pathway:</p>
-                    <select id="path"><option>120 Credits + 2yrs Working</option><option>150 Credits + 1yr Working</option></select>
+                    <select id="path"><option>120 Credits</option><option>150 Credits</option></select>
                     <button class="action-btn" onclick="nextStep(2)">Next</button>
                 </div>
                 <div id="step3" class="hidden">
@@ -43,12 +43,12 @@
 
             <div id="personalized-results" class="hidden">
                 <div class="summary-card">
-                    <h3>Interactive Checklist</h3>
-                    <p>Check the courses you have already completed. Then click below to generate a printable PDF of your remaining schedule.</p>
-                    <button class="action-btn" style="background:#2ecc71;" onclick="printChecklist()">🖨️ Create Printable PDF of Remaining Classes</button>
+                    <p><strong>Step 1:</strong> Check off the courses you have passed.</p>
+                    <p><strong>Step 2:</strong> Click below to create a PDF of the remaining courses.</p>
+                    <button class="action-btn" style="background:#2ecc71;" onclick="printRemainingPDF()">🖨️ Create PDF of Remaining Classes</button>
                 </div>
                 <div id="checklist-area"></div>
-                <button class="action-btn" style="background:#666;" onclick="location.reload()">Reset Advisor</button>
+                <button class="action-btn" style="background:#666;" onclick="location.reload()">Start Over</button>
             </div>
         </section>
 
