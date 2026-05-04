@@ -3,71 +3,75 @@ let appData = null;
 async function init() {
     try {
         const response = await fetch('./questions.json');
-        if (!response.ok) throw new Error("Data fetch failed");
+        if (!response.ok) throw new Error("Could not load data");
         appData = await response.json();
-        renderStaticTabs();
+        // Render Branding, Tools, and Clubs immediately on load
+        renderResources();
     } catch (error) {
-        console.error("Initialization error:", error);
+        console.error("Error initializing app:", error);
     }
 }
 
-function nextStep(currentStep) {
-    document.getElementById(`step${currentStep}`).classList.add('hidden');
-    document.getElementById(`step${currentStep + 1}`).classList.remove('hidden');
+// Navigates between survey steps
+function nextStep(current) {
+    document.getElementById(`step${current}`).classList.add('hidden');
+    document.getElementById(`step${current + 1}`).classList.remove('hidden');
 }
 
+// Filters classes and builds the interactive checklist
 function generateRoadmap() {
     const year = document.getElementById('user-year').value;
-    const grad = document.getElementById('grad-date').value;
     const path = document.getElementById('cpa-path').value;
+    const grad = document.getElementById('grad-date').value;
 
     document.getElementById('survey-container').classList.add('hidden');
     document.getElementById('personalized-results').classList.remove('hidden');
     
     document.getElementById('display-summary').innerHTML = 
-        `<strong>Plan:</strong> ${path} | <strong>Target Grad:</strong> ${grad}`;
+        `<strong>Status:</strong> ${year.toUpperCase()} | <strong>Plan:</strong> ${path} | <strong>Graduation:</strong> ${grad}`;
 
     const checklistContainer = document.getElementById('checklist-area');
-    checklistContainer.innerHTML = "";
+    checklistContainer.innerHTML = ""; // Clear old results
 
-    // Logic: Freshmen/Sophomores get Foundational + Business + SAS
-    // Juniors/Seniors get Business + SAS + Major
+    // LOGIC: Filter based on student year
     if (year === "freshman" || year === "sophomore") {
-        renderChecklistSection("Foundational Core Requirements", appData.curriculum.foundationalCore);
-    }
-    
-    renderChecklistSection("Business Core Requirements", appData.curriculum.businessCore);
-    renderChecklistSection("SAS Core Requirements", appData.curriculum.sasCore);
-
-    if (year === "junior" || year === "senior") {
-        renderChecklistSection("Accounting Major Requirements", appData.curriculum.accountingMajor);
+        renderSection("Foundational Core", appData.curriculum.foundationalCore);
+        renderSection("Business Core", appData.curriculum.businessCore);
+        renderSection("SAS Core Requirements", appData.curriculum.sasCore);
+    } else {
+        renderSection("Business Core", appData.curriculum.businessCore);
+        renderSection("SAS Core Requirements", appData.curriculum.sasCore);
+        renderSection("Accounting Major Requirements", appData.curriculum.accountingMajor);
     }
 }
 
-function renderChecklistSection(title, items) {
+function renderSection(title, items) {
     const container = document.getElementById('checklist-area');
     const box = document.createElement('div');
     box.className = "result-box";
     box.innerHTML = `<h3>${title}</h3>`;
     
     items.forEach(item => {
-        const div = document.createElement('div');
-        div.className = "check-item";
-        div.innerHTML = `<input type="checkbox"> <span>${item}</span>`;
-        box.appendChild(div);
+        const itemDiv = document.createElement('div');
+        itemDiv.className = "check-item";
+        itemDiv.innerHTML = `<input type="checkbox"> <span>${item}</span>`;
+        box.appendChild(itemDiv);
     });
     container.appendChild(box);
 }
 
-function renderStaticTabs() {
+function renderResources() {
+    // Fill Branding Tab
     document.getElementById('branding-list').innerHTML = appData.branding.map(b => 
-        `<div class="guide-block"><a href="${b.url}" target="_blank">${b.name} ↗</a></div>`).join('');
+        `<div class="resource-card"><a href="${b.url}" target="_blank">${b.name} ↗</a></div>`).join('');
     
+    // Fill Study Tools Tab
     document.getElementById('tools-list').innerHTML = appData.cpaTools.map(t => 
-        `<div class="tool-card"><a href="${t.url}" target="_blank">${t.name} ↗</a></div>`).join('');
+        `<div class="resource-card"><a href="${t.url}" target="_blank">${t.name} ↗</a></div>`).join('');
     
+    // Fill Clubs Tab
     document.getElementById('clubs-list').innerHTML = appData.clubs.map(c => 
-        `<div class="guide-block"><a href="${c.url}" target="_blank">${c.name} ↗</a></div>`).join('');
+        `<div class="resource-card"><a href="${c.url}" target="_blank">${c.name} ↗</a></div>`).join('');
 }
 
 function showTab(id) {
